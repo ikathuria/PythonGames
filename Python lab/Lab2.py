@@ -1,0 +1,52 @@
+#%%
+#Multiplication table till 10
+for i in range(1,11):
+    for j in range(1,11):
+        print(i,'x', j,'=',(i*j))
+
+#%%
+#Create a list
+my_list = [1, 2, 3]
+print(my_list)
+
+#%%
+#Create a tuple
+my_tuple=(12, 13, 14)
+print(my_tuple)
+
+#%%
+#Create a dictionary
+my_dictionary={"Name", "Age", "Height"}
+print(my_dictionary)
+
+#%%
+#Addition with list and tuple
+l1=[1, 2, 3]
+l2=[4, 5, 6]
+
+print(l1+l2)
+
+t1=(12, 13, 14)
+t2=("Name", "Age")
+
+print(t1+t2)
+
+#%%
+#Multiplication with list and tuple
+l1=[1, 2, 3]
+l2=[4, 5, 6]
+
+print(l1*l2)
+
+t1=(12, 13, 14)
+t2=("Name", "Age")
+
+print(t1*t2)
+
+#%%
+#Slicing list and tuple
+l1=[1, 2, 3, 4, 5, 6]
+print(l1[:3])
+
+t1=("First_Name", "Last_Name", "Age", "Height", "Gender")
+print(t1[:5:2])
