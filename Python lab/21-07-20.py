@@ -1,3 +1,4 @@
+#Largest out of 2 numbers
 a=int(input("Enter first number: "))
 b=int(input("Enter second number: "))
 
@@ -9,6 +10,7 @@ else:
     print("neither number is the largest")
     
 #%%
+#Smallest out of 2 numbers
 a=int(input("Enter first number: "))
 b=int(input("Enter second number: "))
 
@@ -20,6 +22,7 @@ else:
     print("neither number is the smallest")
 
 #%%
+#Smallest out of 3 numbers
 a=int(input("Enter first number: "))
 b=int(input("Enter second number: "))
 c=int(input("Enter third number: "))
@@ -34,6 +37,7 @@ else:
     print("there is no one smallest vlaue")
 
 #%%
+#Odd/Even
 a=int(input("Enter number: "))
 
 if(a%2==0):
@@ -42,6 +46,7 @@ else:
     print("number is odd")
 
 #%%
+#Positive/Negative
 a=int(input("Enter number: "))
 
 if(a>0):
@@ -52,6 +57,7 @@ else:
     print("number is zero")
 
 #%%
+#Blood Donation
 blood_recipient=input("Enter blood group of recipient: ")
 blood_donor=input("Enter blood group of donor: ")
 

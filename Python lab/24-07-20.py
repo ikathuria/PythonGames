@@ -32,7 +32,7 @@ t2=("Name", "Age")
 print(t1+t2)
 
 #%%
-#Multiplication with list and tuple
+#Multiplication with list and tuple -not possible-
 l1=[1, 2, 3]
 l2=[4, 5, 6]
 
