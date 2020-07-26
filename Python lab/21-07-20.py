@@ -7,7 +7,7 @@ if(a>b):
 elif(a<b):
     print("second number is the largest number")
 else:
-    print("neither number is the largest")
+    print("numbers are equal")
     
 #%%
 #Smallest out of 2 numbers
@@ -19,7 +19,7 @@ if(a<b):
 elif(a>b):
     print("second number is the smallest number")
 else:
-    print("neither number is the smallest")
+    print("numbers are equal")
 
 #%%
 #Smallest out of 3 numbers
