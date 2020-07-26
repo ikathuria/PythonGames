@@ -27,11 +27,11 @@ a=int(input("Enter first number: "))
 b=int(input("Enter second number: "))
 c=int(input("Enter third number: "))
 
-if((a<b) & (a<c)):
+if((a<b) and (a<c)):
     print("first number is the smallest number")
-elif((b<a) & (b<c)):
+elif((b<a) and (b<c)):
     print("second number is the smallest number")
-elif((c<a) & (c<b)):
+elif((c<a) and (c<b)):
     print("third number is the smallest")
 else:
     print("there is no one smallest vlaue")
