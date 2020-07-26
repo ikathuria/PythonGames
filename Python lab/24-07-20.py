@@ -17,7 +17,7 @@ print(my_tuple)
 
 #%%
 #Create a dictionary
-my_dictionary={"Name", "Age", "Height"}
+my_dictionary={"Name":"Ishani", "Age":19, "Height":160}
 print(my_dictionary)
 
 #%%
