@@ -1,9 +1,20 @@
-# ---------------------------------------------------------------------------------------
+"""This is a program to simulate the game of "Tic-Tac-Toe" also known as
+    "Noughts and Crosses" using python.
+
+This program uses the 'random' module to shuffle the "Deck of Cards", which is
+made using classes.
+"""
 def replay():
+    """Gives the user the otion to play again."""
     return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
 
 # DISPLAY BOARD -------------------------------------------------------------------------
 def display_board(board):
+    """Prints the game board while updating it as the game is progressing.
+
+    Args:
+        board: The game board.
+    """
     print()
     print(" "+board[7]+" "+"|"+" "+board[8]+" "+"|"+" "+board[9]+" ")
     print("-"+"-"+"-"+"|"+"-"+"-"+"-"+"|"+"-"+"-"+"-")
@@ -12,7 +23,8 @@ def display_board(board):
     print(" "+board[1]+" "+"|"+" "+board[2]+" "+"|"+" "+board[3]+" ")
 
 # WIN CHECK -----------------------------------------------------------------------------
-def win_check(board,mark):    
+def win_check(board, mark):
+    """Checks if any player has won the game."""
     return ((board[7] == mark and board[8] == mark and board[9] == mark) or # TOP
             (board[4] == mark and board[5] == mark and board[6] == mark) or # MIDDLE
             (board[1] == mark and board[2] == mark and board[3] == mark) or # BOTTOM
@@ -24,36 +36,28 @@ def win_check(board,mark):
 
 # PLAYER INPUT --------------------------------------------------------------------------
 def marker():
+    """Takes input from player 1 for their choice of marker (X or O)."""
     while True:
         try:
-            marker = input("Player 1, do you want to be X or O? ")        
-            marker = marker.lower()
-            if marker == 'x':
+            mark = input("Player 1, do you want to be X or O? ")
+            mark = mark.lower()
+            if mark == 'x':
                 return ('X', 'O')
-            elif marker == 'o':
+            elif mark == 'o':
                 return ('O', 'X')
             else:
                 raise ValueError
         except ValueError:
             print("Invalid input! Try Again!")
 
-# SPACE CHECK ---------------------------------------------------------------------------
-def space_check(board, position):
-        return board[position] == ' '
-
-def full_board_check(board):
-    for i in range(1,10):
-        if space_check(board, i):
-            return False
-    return True
-
 # POSITION ------------------------------------------------------------------------------
-def position(board):
+def position_input(board):
+    """Takes input from players for their choice of position on the board."""
     position = 0
     while True:
         try:
             position = int(input("Enter position (1-9): "))
-            if position in range(1,10):
+            if position in range(1, 10):
                 if space_check(board, position):
                     return position
                 else:
@@ -63,71 +67,82 @@ def position(board):
         except ValueError:
             print("Invalid input! Try Again!")
 
+# SPACE CHECK ---------------------------------------------------------------------------
+def space_check(board, position):
+    """Checks if the position is free or not."""
+    return board[position] == ' '
+
+def full_board_check(board):
+    """Checks if the all the positions have been filled or not."""
+    for i in range(1, 10):
+        if space_check(board, i):
+            return False
+    return True
+
 # PLACING THE MARKER --------------------------------------------------------------------
-def place_marker(board, marker, pos):
-    board[pos] = marker
+def place_marker(board, marker, POS):
+    """Places the marker chosen earlier on the board on the position of choice."""
+    board[POS] = marker
 
 # MAIN GAME -----------------------------------------------------------------------------
 while True:
     #GAME DISPLAY
-    theKey = ['0','1','2','3','4','5','6','7','8','9']
-    gameDisplay = ['0',' ',' ',' ',' ',' ',' ',' ',' ',' ']
-    
-    print("How the position system works:")
-    display_board(theKey)
-    
-    #GAME START
-    play_game = input("Ready player one? Y or N: ")
-    if play_game.lower()[0] == 'y':
-        game_on = True
-    else:
-        game_on = False
-    
-    #TURN
-    turn = "Player 1"
-    
-    #GMAE ON
-    while game_on:
-        #markers
-        player1, player2 = marker()
-        
-        if turn == "Player 1":
-            # PLAYER 1 TURN
-            
-            display_board(gameDisplay)
-            pos = position(gameDisplay)
-            place_marker(gameDisplay, player1, pos)
+    THE_KEY = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    GAME_DISPLAY = ['0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-            if win_check(gameDisplay, player1):
-                display_board(gameDisplay)
+    print("How the position system works:")
+    display_board(THE_KEY)
+
+    #GAME START
+    PLAY_GAME = input("Ready player one? Y or N: ")
+    GAME_ON = bool(PLAY_GAME.lower()[0] == 'y')
+
+    #TURN
+    TURN = "Player 1"
+
+    #MARKERS
+    PLAYER1, PLAYER2 = marker()
+
+    #GAME ON
+    while GAME_ON:
+
+        if TURN == "Player 1":
+            # PLAYER 1 TURN
+
+            display_board(GAME_DISPLAY)
+            POS = position_input(GAME_DISPLAY)
+            place_marker(GAME_DISPLAY, PLAYER1, POS)
+
+            if win_check(GAME_DISPLAY, PLAYER1):
+                display_board(GAME_DISPLAY)
                 print("\nPlayer 1 is the winner!")
-                game_on = False
+                GAME_ON = False
             else:
-                if full_board_check(gameDisplay):
-                    display_board(gameDisplay)
+                if full_board_check(GAME_DISPLAY):
+                    display_board(GAME_DISPLAY)
                     print("\nThe game is a draw!")
                     break
                 else:
-                    turn = "Player 2"
+                    TURN = "Player 2"
 
         else:
             # PLAYER 2 TURN
-            
-            display_board(gameDisplay)
-            pos = position(gameDisplay)
-            place_marker(gameDisplay, player2, pos)
 
-            if win_check(gameDisplay, player2):
-                display_board(gameDisplay)
+            display_board(GAME_DISPLAY)
+            POS = position_input(GAME_DISPLAY)
+            place_marker(GAME_DISPLAY, PLAYER2, POS)
+
+            if win_check(GAME_DISPLAY, PLAYER2):
+                display_board(GAME_DISPLAY)
                 print("\nPlayer 2 has won!")
-                game_on = False
+                GAME_ON = False
             else:
-                if full_board_check(gameDisplay):
-                    display_board(gameDisplay)
+                if full_board_check(GAME_DISPLAY):
+                    display_board(GAME_DISPLAY)
                     print("\nThe game is a draw!")
                     break
                 else:
-                    turn = "Player 1"
+                    TURN = "Player 1"
 
     if not replay():
         break
