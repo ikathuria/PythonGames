@@ -4,11 +4,15 @@
 This program uses the 'random' module to shuffle the "Deck of Cards", which is
 made using classes.
 """
+
+
 def replay():
     """Gives the user the otion to play again."""
     return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
 
 # DISPLAY BOARD -------------------------------------------------------------------------
+
+
 def display_board(board):
     """Prints the game board while updating it as the game is progressing.
 
@@ -23,18 +27,22 @@ def display_board(board):
     print(" "+board[1]+" "+"|"+" "+board[2]+" "+"|"+" "+board[3]+" ")
 
 # WIN CHECK -----------------------------------------------------------------------------
+
+
 def win_check(board, mark):
     """Checks if any player has won the game."""
-    return ((board[7] == mark and board[8] == mark and board[9] == mark) or # TOP
-            (board[4] == mark and board[5] == mark and board[6] == mark) or # MIDDLE
-            (board[1] == mark and board[2] == mark and board[3] == mark) or # BOTTOM
-            (board[7] == mark and board[4] == mark and board[1] == mark) or # LEFT
-            (board[8] == mark and board[5] == mark and board[2] == mark) or # MIDDLE
-            (board[9] == mark and board[6] == mark and board[3] == mark) or # RIGHT
-            (board[7] == mark and board[5] == mark and board[3] == mark) or # DIAGONAL
-            (board[9] == mark and board[5] == mark and board[1] == mark)) # DIAGONAL
+    return ((board[7] == mark and board[8] == mark and board[9] == mark) or  # TOP
+            (board[4] == mark and board[5] == mark and board[6] == mark) or  # MIDDLE
+            (board[1] == mark and board[2] == mark and board[3] == mark) or  # BOTTOM
+            (board[7] == mark and board[4] == mark and board[1] == mark) or  # LEFT
+            (board[8] == mark and board[5] == mark and board[2] == mark) or  # MIDDLE
+            (board[9] == mark and board[6] == mark and board[3] == mark) or  # RIGHT
+            (board[7] == mark and board[5] == mark and board[3] == mark) or  # DIAGONAL
+            (board[9] == mark and board[5] == mark and board[1] == mark))  # DIAGONAL
 
 # PLAYER INPUT --------------------------------------------------------------------------
+
+
 def marker():
     """Takes input from player 1 for their choice of marker (X or O)."""
     while True:
@@ -51,6 +59,8 @@ def marker():
             print("Invalid input! Try Again!")
 
 # POSITION ------------------------------------------------------------------------------
+
+
 def position_input(board):
     """Takes input from players for their choice of position on the board."""
     position = 0
@@ -68,9 +78,12 @@ def position_input(board):
             print("Invalid input! Try Again!")
 
 # SPACE CHECK ---------------------------------------------------------------------------
+
+
 def space_check(board, position):
     """Checks if the position is free or not."""
     return board[position] == ' '
+
 
 def full_board_check(board):
     """Checks if the all the positions have been filled or not."""
@@ -80,36 +93,40 @@ def full_board_check(board):
     return True
 
 # PLACING THE MARKER --------------------------------------------------------------------
+
+
 def place_marker(board, marker, POS):
     """Places the marker chosen earlier on the board on the position of choice."""
     board[POS] = marker
 
+
 # MAIN GAME -----------------------------------------------------------------------------
 while True:
-    #GAME DISPLAY
+    # GAME DISPLAY
     THE_KEY = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     GAME_DISPLAY = ['0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
     print("How the position system works:")
     display_board(THE_KEY)
 
-    #GAME START
+    # GAME START
     PLAY_GAME = input("Ready player one? Y or N: ")
     GAME_ON = bool(PLAY_GAME.lower()[0] == 'y')
 
-    #TURN
+    # TURN
     TURN = "Player 1"
 
-    #MARKERS
+    # MARKERS
     PLAYER1, PLAYER2 = marker()
 
-    #GAME ON
+    # GAME ON
     while GAME_ON:
 
         if TURN == "Player 1":
             # PLAYER 1 TURN
 
             display_board(GAME_DISPLAY)
+            print("Player 1,", end=" ")
             POS = position_input(GAME_DISPLAY)
             place_marker(GAME_DISPLAY, PLAYER1, POS)
 
@@ -129,6 +146,7 @@ while True:
             # PLAYER 2 TURN
 
             display_board(GAME_DISPLAY)
+            print("Player 2,", end=" ")
             POS = position_input(GAME_DISPLAY)
             place_marker(GAME_DISPLAY, PLAYER2, POS)
 
