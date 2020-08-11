@@ -8,9 +8,10 @@ made using classes.
 
 def replay():
     """Gives the user the otion to play again."""
-    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
+    res = input('Do you want to play again? Enter Yes or No:')
+    return res.lower().startswith('y')
 
-# DISPLAY BOARD -------------------------------------------------------------------------
+# DISPLAY BOARD
 
 
 def display_board(board):
@@ -26,7 +27,7 @@ def display_board(board):
     print("-"+"-"+"-"+"|"+"-"+"-"+"-"+"|"+"-"+"-"+"-")
     print(" "+board[1]+" "+"|"+" "+board[2]+" "+"|"+" "+board[3]+" ")
 
-# WIN CHECK -----------------------------------------------------------------------------
+# WIN CHECK
 
 
 def win_check(board, mark):
@@ -40,7 +41,7 @@ def win_check(board, mark):
             (board[7] == mark and board[5] == mark and board[3] == mark) or  # DIAGONAL
             (board[9] == mark and board[5] == mark and board[1] == mark))  # DIAGONAL
 
-# PLAYER INPUT --------------------------------------------------------------------------
+# PLAYER INPUT
 
 
 def marker():
@@ -58,7 +59,7 @@ def marker():
         except ValueError:
             print("Invalid input! Try Again!")
 
-# POSITION ------------------------------------------------------------------------------
+# POSITION
 
 
 def position_input(board):
@@ -77,7 +78,7 @@ def position_input(board):
         except ValueError:
             print("Invalid input! Try Again!")
 
-# SPACE CHECK ---------------------------------------------------------------------------
+# SPACE CHECK
 
 
 def space_check(board, position):
@@ -92,15 +93,15 @@ def full_board_check(board):
             return False
     return True
 
-# PLACING THE MARKER --------------------------------------------------------------------
+# PLACING THE MARKER
 
 
 def place_marker(board, marker, POS):
-    """Places the marker chosen earlier on the board on the position of choice."""
+    """Places the marker chosen on the position of choice."""
     board[POS] = marker
 
 
-# MAIN GAME -----------------------------------------------------------------------------
+# MAIN GAME
 while True:
     # GAME DISPLAY
     THE_KEY = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']

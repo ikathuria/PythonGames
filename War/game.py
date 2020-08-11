@@ -10,10 +10,12 @@ import random
 SUITS = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 RANKS = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
          'Ten', 'Jack', 'Queen', 'King', 'Ace')
-VALUES = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8,
-          'Nine':9, 'Ten':10, 'Jack':11, 'Queen':12, 'King':13, 'Ace':14}
+VALUES = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7,
+          'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 11, 'Queen': 12, 'King': 13, 'Ace': 14}
 
-#CARD CLASS
+# CARD CLASS
+
+
 class Card:
     """This is a class for storing suit, rank and values of Cards in the Deck.
 
@@ -22,6 +24,7 @@ class Card:
         rank (str): The rank of the card('Two', 'Three', 'Four', 'Five', 'Six',
         'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
     """
+
     def __init__(self, suit, rank):
         """The constructor for Card class.
 
@@ -42,9 +45,12 @@ class Card:
         """
         return self.rank + " of " + self.suit
 
-#DECK CLASS
+# DECK CLASS
+
+
 class Deck:
     """This is a class for creating, shufling and dealing the Cards in the Deck."""
+
     def __init__(self):
         """The constructor for Deck class."""
         self.all_cards = []
@@ -63,9 +69,12 @@ class Deck:
 
         return self.all_cards.pop()
 
-#PLAYER CLASS
+# PLAYER CLASS
+
+
 class Player:
     """This is a class for storing Player names and adding/removing their cards."""
+
     def __init__(self, name):
         """The constructor for Player class."""
         self.name = name
@@ -80,14 +89,15 @@ class Player:
         """Add cards to the bottom of the player's pile."""
 
         if isinstance(new_cards, list):
-            self.all_cards.extend(new_cards) #For multiple cards
+            self.all_cards.extend(new_cards)  # For multiple cards
         else:
-            self.all_cards.append(new_cards) #For single card
+            self.all_cards.append(new_cards)  # For single card
 
     def __str__(self):
         """To add cards to the player's pile."""
 
         return f"{self.name} has {len(self.all_cards)} cards."
+
 
 # INITIALIZING
 PLAYER_ONE = Player("One")

@@ -1,4 +1,4 @@
-"""This is a program to simulate the card game known as "BlackJack" using python.
+"""A program to simulate the card game known as "BlackJack" using python.
 
 This program uses the 'random' module to shuffle the "Deck of Cards", which is
 made using classes.
@@ -12,10 +12,12 @@ SUITS = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 RANKS = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
          'Ten', 'Jack', 'Queen', 'King', 'Ace')
 
-VALUES = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8,
-          'Nine':9, 'Ten':10, 'Jack':10, 'Queen':10, 'King':10, 'Ace':11}
+VALUES = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7,
+          'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11}
 
-#CARD CLASS
+# CARD CLASS
+
+
 class Card:
     """This is a class for storing suit, rank and values of Cards in the Deck.
 
@@ -24,6 +26,7 @@ class Card:
         rank (str): The rank of the card('Two', 'Three', 'Four', 'Five', 'Six',
         'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
     """
+
     def __init__(self, suit, rank):
         """The constructor for Card class.
 
@@ -44,9 +47,12 @@ class Card:
         """
         return self.rank + " of " + self.suit
 
-#DECK CLASS
+# DECK CLASS
+
+
 class Deck:
-    """This is a class for creating, shufling and dealing the Cards in the Deck."""
+    """Class for creating, shufling and dealing the Cards in the Deck."""
+
     def __init__(self):
         """The constructor for Deck class."""
         self.deck = []
@@ -77,9 +83,12 @@ class Deck:
             temp += '\n ' + card.__str__()
         return 'The Deck has:\n' + temp
 
-#PLAYER CLASS
+# PLAYER CLASS
+
+
 class Player:
-    """This is a class for creating, shufling and dealing the Cards in the Deck."""
+    """Class for creating, shufling and dealing the Cards in the Deck."""
+
     def __init__(self, name):
         """The constructor for Player class.
 
@@ -103,27 +112,30 @@ class Player:
         """
 
         if isinstance(new_cards, list):
-            self.deck.extend(new_cards) #For multiple cards
+            self.deck.extend(new_cards)  # For multiple cards
         else:
-            self.deck.append(new_cards) #For single card
+            self.deck.append(new_cards)  # For single card
 
     def __str__(self):
         """To add cards to the player's pile."""
 
         return f"{self.name} has {len(self.deck)} cards."
 
-#CHIPS CLASS
+# CHIPS CLASS
+
+
 class Chips:
-    
-    def __init__(self,total,bet):
-        self.total = 1000  #Default value
+
+    def __init__(self, total, bet):
+        self.total = 1000  # Default value
         self.bet = 0
-        
+
     def win_bet(self):
         self.total += 100
-    
+
     def lose_bet(self):
         self.total -= 100
+
 
 # INITIALIZING
 PLAYER_ONE = Player("One")
@@ -136,48 +148,22 @@ NEW_DECK.shuffle()
 GAME_ON = True
 
 # GAME LOOP
-#while GAME_ON:
+# while GAME_ON:
 
-    # Bet does not exceed their available chips
+# TODO: Bet does not exceed their available chips
 
-    # Deal two cards to the Dealer and two cards to the Player
+# TODO:  Deal two cards to the Dealer and two cards to the Player
 
-    # Show only one of the Dealer's cards, the other remains hidden
-    # Show both of the Player's cards
+# TODO:  Show only one of the Dealer's cards, the other remains hidden
+# TODO:  Show both of the Player's cards
 
-    #Ask the Player if they wish to Hit, and take another card
-    #If the Player's hand doesn't Bust (go over 21), ask if they'd like to Hit again.
+# TODO:  Ask the Player if they wish to Hit, and take another card
+# TODO:  If the Player's hand doesn't Bust (go over 21), ask if they'd like to Hit again.
 
-# =============================================================================
-#     #If a Player Stands, play the Dealer's hand. The dealer will always Hit
-#     until the Dealer's value meets or exceeds 17
-# =============================================================================
+# TODO: If a Player Stands, play the Dealer's hand. The dealer will always Hit until the Dealer's value meets or exceeds 17
 
-    #Determine the winner and adjust the Player's chips accordingly
+# TODO:  Determine the winner and adjust the Player's chips accordingly
 
-    #Ask the Player if they'd like to play again
+# TODO:  Ask the Player if they'd like to play again
 
-
-    #pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# pass
