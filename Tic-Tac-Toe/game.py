@@ -1,8 +1,5 @@
-"""This is a program to simulate the game of "Tic-Tac-Toe" also known as
-    "Noughts and Crosses" using python.
+"""This is a program to simulate the game of "Tic-Tac-Toe" also known as "Noughts and Crosses" using python.
 
-This program uses the 'random' module to shuffle the "Deck of Cards", which is
-made using classes.
 """
 
 
