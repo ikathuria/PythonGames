@@ -3,9 +3,10 @@
 """
 
 
+# REPLAY
 def replay():
     """Gives the user the otion to play again."""
-    res = input('Do you want to play again? Enter Yes or No:')
+    res = input("Do you want to play again? Enter Yes or No: ")
     return res.lower().startswith('y')
 
 # DISPLAY BOARD
@@ -108,7 +109,7 @@ while True:
     display_board(THE_KEY)
 
     # GAME START
-    PLAY_GAME = input("Ready player one? Y or N: ")
+    PLAY_GAME = input("\nReady player one? Y or N: ")
     GAME_ON = bool(PLAY_GAME.lower()[0] == 'y')
 
     # TURN
@@ -119,6 +120,9 @@ while True:
 
     # GAME ON
     while GAME_ON:
+
+        wel = "WELCOME TO TIC-TAC-TOE"
+        print('\n', *wel)
 
         if TURN == "Player 1":
             # PLAYER 1 TURN
