@@ -1,3 +1,0 @@
-# Demo
-
-print("Hello universe!")
