@@ -1,6 +1,7 @@
 import os
 
 while (1):
+  print("\n")
   print("1. Rock Paper Scissors")
   print("2. Tic-Tac-Toe")
   print("3. War")
