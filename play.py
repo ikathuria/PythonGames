@@ -23,9 +23,8 @@ while (1):
 
   while True:
     try:
-      choice = input("\nWhich game do you want to play? (1-5): ")
-      if choice in range(1,6) and choice.isdigit():
-        choice = int(choice)
+      choice = int(input("\nWhich game do you want to play? (1-5): "))
+      if choice in range(1,6):
         break
       else:
         raise ValueError
