@@ -1,3 +1,3 @@
 # PythonProjects
 
-[CLICK ME!](https://pythonprojects.ikathuria.repl.run/ "Run on replit" target="_blank")
+[CLICK ME!](https://pythonprojects.ikathuria.repl.run/ "Run on replit")
