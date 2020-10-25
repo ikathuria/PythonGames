@@ -4,10 +4,12 @@ import time
 def clearScreen():
   time.sleep(1.5)
 
+  # for mac and linux
   if os.name == 'posix':
     _ = os.system('clear')
+
+  # for windows platfrom
   else:
-    # for windows platfrom
     _ = os.system('cls')
 
 while (1):
@@ -18,7 +20,17 @@ while (1):
   print("3. War")
   print("4. Blackjack")
   print("5. Exit")
-  choice = int(input("Which game do you want to play? (1-5): "))
+
+  while True:
+    try:
+      choice = int(input("\nWhich game do you want to play? (1-5): "))
+      if choice in range(1,6):
+        break
+      else:
+        raise ValueError
+
+    except ValueError:
+      print("Invalid input! Try again!")
 
   if choice == 1:
     os.system("python Rock-Paper-Scissors/game.py")
@@ -28,6 +40,11 @@ while (1):
     
   elif choice == 3:
     os.system("python War/game.py")
+
+    print("Closing in 10 seconds")
+    for i in range(1,11):
+      print(i)
+      time.sleep(1)
     
   elif choice == 4:
     os.system("python BlackJack/game.py")
