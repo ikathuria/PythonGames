@@ -276,9 +276,9 @@ def tie(player, dealer):  # tie
 # GAME LOOP
 while True:
 
-    # START
+    # welcome
     wel = "WELCOME TO BALCKJACK"
-    print(*wel)
+    print('\n', *wel)
     print()
 
     # CARDS
@@ -333,22 +333,26 @@ while True:
 
             if dealer_hand.value > 21:
                 dealer_busts(player_hand, dealer_hand, player_chips)
+                break
 
             elif dealer_hand.value > player_hand.value:
                 dealer_wins(player_hand, dealer_hand, player_chips)
+                break
 
             elif dealer_hand.value < player_hand.value:
                 player_wins(player_hand, dealer_hand, player_chips)
+                break
 
             else:
                 tie(player_hand, dealer_hand)
+                break
 
         # PLAYER'S TOTAL CHIPS
         print(f"\nPlayer's total chips: {player_chips.total}")
 
         # PLAY AGAIN
     try:
-        replay = input("Would you like to play again? Yes or No: ")
+        replay = input("\nWould you like to play again? Yes or No: ")
         if replay.lower().startswith('y'):
             playing = True
             continue

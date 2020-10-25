@@ -116,6 +116,11 @@ GAME_ON = True
 # NUMBER OF ROUNDS
 ROUND_NUM = 0
 
+# welcome
+wel = "WELCOME TO WAR"
+print('\n', *wel)
+print()
+
 # GAME LOOP
 while GAME_ON:
 

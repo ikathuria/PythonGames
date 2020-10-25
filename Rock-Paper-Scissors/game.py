@@ -93,7 +93,7 @@ GAME_ON = True
 while GAME_ON:
 
     # welcome
-    wel = "Welcome to rock-paper-scissors"
+    wel = "WELCOME TO ROCK-PAPER-SCISSORS"
     print('\n', *wel)
     print()
 
@@ -121,7 +121,7 @@ while GAME_ON:
 
     while True:
         try:
-            replay = input("\nDo you want to play again? Enter Yes or No:")
+            replay = input("\nDo you want to play again? Enter Yes or No: ")
             if isinstance(replay, str):
                 if replay.lower().startswith('y'):
                     GAME_ON = True
