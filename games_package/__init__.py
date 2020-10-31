@@ -1,6 +1,12 @@
 import os
 import time
-import BlackJack, Hangman, NumberGuessing, RockPaperScissors, TicTacToe, War
+import BlackJack
+import Hangman
+import NumberGuessing
+import RockPaperScissors
+import TicTacToe
+import War
+
 
 def clearScreen():
     time.sleep(1.5)
@@ -14,9 +20,8 @@ def clearScreen():
         _ = os.system('cls')
 
 
-
 def rules(nameOfGame):
-    
+
     needHelp = input("Do you want to see the rules for the game: ")
     if needHelp.lower().startswith('y'):
         print(nameOfGame.__doc__)
@@ -47,32 +52,32 @@ while (1):
     # blackjack
     if choice == 1:
         rules(BlackJack)
-        os.system("python BlackJack.py")
+        os.system("python games_package\\BlackJack.py")
 
     # hangman
     elif choice == 2:
         rules(Hangman)
-        os.system("python Games\\Hangman.py")
+        os.system("python games_package\\Hangman.py")
 
     # number guessing game
     elif choice == 3:
         rules(NumberGuessing)
-        os.system("python Games\\NumberGuessing.py")
+        os.system("python games_package\\NumberGuessing.py")
 
     # rock paper scissors
     elif choice == 4:
         rules(RockPaperScissors)
-        os.system("python Games\\RockPaperScissors.py")
+        os.system("python games_package\\RockPaperScissors.py")
 
     # nuer tic tac toe
     elif choice == 5:
         rules(TicTacToe)
-        os.system("python Games\\TicTacToe.py")
+        os.system("python games_package\\TicTacToe.py")
 
     # war
     elif choice == 6:
         rules(War)
-        os.system("python Games\\War.py")
+        os.system("python games_package\\War.py")
 
         print("Closing in 10 seconds")
         for i in range(1, 11):
@@ -89,4 +94,4 @@ while (1):
     else:
         print("Invalid option! Try again!")
 
-    clearScreen()
+    # clearScreen()
