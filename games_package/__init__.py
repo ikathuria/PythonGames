@@ -77,6 +77,12 @@ while (1):
     # war
     elif choice == 6:
         rules(War)
+
+        print("Starting in 10 seconds")
+        for i in range(1, 11):
+            print(i)
+            time.sleep(1)
+
         os.system("python games_package\\War.py")
 
         print("Closing in 10 seconds")
