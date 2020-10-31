@@ -9,9 +9,8 @@ def replay():
     res = input("Do you want to play again? Enter Yes or No: ")
     return res.lower().startswith('y')
 
+
 # DISPLAY BOARD
-
-
 def display_board(board):
     """Prints the game board while updating it as the game is progressing.
 
@@ -36,7 +35,8 @@ def win_check(board, mark):
             (board[7] == mark and board[4] == mark and board[1] == mark) or  # LEFT
             (board[8] == mark and board[5] == mark and board[2] == mark) or  # MIDDLE
             (board[9] == mark and board[6] == mark and board[3] == mark) or  # RIGHT
-            (board[7] == mark and board[5] == mark and board[3] == mark) or  # DIAGONAL
+            # DIAGONAL
+            (board[7] == mark and board[5] == mark and board[3] == mark) or
             (board[9] == mark and board[5] == mark and board[1] == mark))  # DIAGONAL
 
 # PLAYER INPUT
@@ -99,75 +99,76 @@ def place_marker(board, marker, POS):
     board[POS] = marker
 
 
-# MAIN GAME
-while True:
-    # welcome
-    wel = "WELCOME TO TIC-TAC-TOE"
-    print('\n', *wel)
-    print()
-
-    # GAME DISPLAY
-    THE_KEY = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    GAME_DISPLAY = ['0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
-    print("How the position system works:")
-    display_board(THE_KEY)
-
-    # GAME START
-    PLAY_GAME = input("\nReady player one? Y or N: ")
-    GAME_ON = bool(PLAY_GAME.lower()[0] == 'y')
-
-    # TURN
-    TURN = "Player 1"
-
-    # MARKERS
-    PLAYER1, PLAYER2 = marker()
-
-    # GAME ON
-    while GAME_ON:
-
+if __name__ == "__main__":
+    # MAIN GAME
+    while True:
+        # welcome
         wel = "WELCOME TO TIC-TAC-TOE"
         print('\n', *wel)
+        print()
 
-        if TURN == "Player 1":
-            # PLAYER 1 TURN
+        # GAME DISPLAY
+        THE_KEY = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        GAME_DISPLAY = ['0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-            display_board(GAME_DISPLAY)
-            print("Player 1,", end=" ")
-            POS = position_input(GAME_DISPLAY)
-            place_marker(GAME_DISPLAY, PLAYER1, POS)
+        print("How the position system works:")
+        display_board(THE_KEY)
 
-            if win_check(GAME_DISPLAY, PLAYER1):
+        # GAME START
+        PLAY_GAME = input("\nReady player one? Y or N: ")
+        GAME_ON = bool(PLAY_GAME.lower()[0] == 'y')
+
+        # TURN
+        TURN = "Player 1"
+
+        # MARKERS
+        PLAYER1, PLAYER2 = marker()
+
+        # GAME ON
+        while GAME_ON:
+
+            wel = "WELCOME TO TIC-TAC-TOE"
+            print('\n', *wel)
+
+            if TURN == "Player 1":
+                # PLAYER 1 TURN
+
                 display_board(GAME_DISPLAY)
-                print("\nPlayer 1 is the winner!")
-                GAME_ON = False
-            else:
-                if full_board_check(GAME_DISPLAY):
+                print("Player 1,", end=" ")
+                POS = position_input(GAME_DISPLAY)
+                place_marker(GAME_DISPLAY, PLAYER1, POS)
+
+                if win_check(GAME_DISPLAY, PLAYER1):
                     display_board(GAME_DISPLAY)
-                    print("\nThe game is a draw!")
-                    break
+                    print("\nPlayer 1 is the winner!")
+                    GAME_ON = False
                 else:
-                    TURN = "Player 2"
+                    if full_board_check(GAME_DISPLAY):
+                        display_board(GAME_DISPLAY)
+                        print("\nThe game is a draw!")
+                        break
+                    else:
+                        TURN = "Player 2"
 
-        else:
-            # PLAYER 2 TURN
+            else:
+                # PLAYER 2 TURN
 
-            display_board(GAME_DISPLAY)
-            print("Player 2,", end=" ")
-            POS = position_input(GAME_DISPLAY)
-            place_marker(GAME_DISPLAY, PLAYER2, POS)
-
-            if win_check(GAME_DISPLAY, PLAYER2):
                 display_board(GAME_DISPLAY)
-                print("\nPlayer 2 has won!")
-                GAME_ON = False
-            else:
-                if full_board_check(GAME_DISPLAY):
-                    display_board(GAME_DISPLAY)
-                    print("\nThe game is a draw!")
-                    break
-                else:
-                    TURN = "Player 1"
+                print("Player 2,", end=" ")
+                POS = position_input(GAME_DISPLAY)
+                place_marker(GAME_DISPLAY, PLAYER2, POS)
 
-    if not replay():
-        break
+                if win_check(GAME_DISPLAY, PLAYER2):
+                    display_board(GAME_DISPLAY)
+                    print("\nPlayer 2 has won!")
+                    GAME_ON = False
+                else:
+                    if full_board_check(GAME_DISPLAY):
+                        display_board(GAME_DISPLAY)
+                        print("\nThe game is a draw!")
+                        break
+                    else:
+                        TURN = "Player 1"
+
+        if not replay():
+            break

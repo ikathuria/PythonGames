@@ -98,85 +98,85 @@ class Player:
 
         return f"{self.name} has {len(self.all_cards)} cards."
 
+if __name__ == "__main__":
+    # INITIALIZING
+    PLAYER_ONE = Player("One")
+    PLAYER_TWO = Player("Two")
 
-# INITIALIZING
-PLAYER_ONE = Player("One")
-PLAYER_TWO = Player("Two")
+    NEW_DECK = Deck()
+    NEW_DECK.shuffle()
 
-NEW_DECK = Deck()
-NEW_DECK.shuffle()
+    for x in range(26):
+        PLAYER_ONE.add_cards(NEW_DECK.deal())
+        PLAYER_TWO.add_cards(NEW_DECK.deal())
 
-for x in range(26):
-    PLAYER_ONE.add_cards(NEW_DECK.deal())
-    PLAYER_TWO.add_cards(NEW_DECK.deal())
+    # GAME ON
+    GAME_ON = True
 
-# GAME ON
-GAME_ON = True
+    # NUMBER OF ROUNDS
+    ROUND_NUM = 0
 
-# NUMBER OF ROUNDS
-ROUND_NUM = 0
+    # welcome
+    wel = "WELCOME TO WAR"
+    print('\n', *wel)
+    print()
 
-# welcome
-wel = "WELCOME TO WAR"
-print('\n', *wel)
-print()
+    # GAME LOOP
+    while GAME_ON:
 
-# GAME LOOP
-while GAME_ON:
+        ROUND_NUM += 1
+        print(f"Round number: {ROUND_NUM}")
 
-    ROUND_NUM += 1
-    print(f"Round number: {ROUND_NUM}")
+        if len(PLAYER_ONE.all_cards) == 0:
+            print("Player 1 has no cards left :(\nPlayer 2 WINS!!")
+            GAME_ON = False
+            break
 
-    if len(PLAYER_ONE.all_cards) == 0:
-        print("Player 1 has no cards left :(\nPlayer 2 WINS!!")
-        GAME_ON = False
-        break
+        if len(PLAYER_TWO.all_cards) == 0:
+            print("Player 2 has no cards left :(\nPlayer 1 WINS!!")
+            GAME_ON = False
+            break
 
-    if len(PLAYER_TWO.all_cards) == 0:
-        print("Player 2 has no cards left :(\nPlayer 1 WINS!!")
-        GAME_ON = False
-        break
+        # new round
+        PLAYER_ONE_CARDS = []
+        PLAYER_ONE_CARDS.append(PLAYER_ONE.remove_one())
 
-    # new round
-    PLAYER_ONE_CARDS = []
-    PLAYER_ONE_CARDS.append(PLAYER_ONE.remove_one())
+        PLAYER_TWO_CARDS = []
+        PLAYER_TWO_CARDS.append(PLAYER_TWO.remove_one())
 
-    PLAYER_TWO_CARDS = []
-    PLAYER_TWO_CARDS.append(PLAYER_TWO.remove_one())
+        AT_WAR = True
+        while AT_WAR:
 
-    AT_WAR = True
-    while AT_WAR:
+            try:
+                if PLAYER_ONE_CARDS[-1].value > PLAYER_TWO_CARDS[-1].value:
 
-        try:
-            if PLAYER_ONE_CARDS[-1].value > PLAYER_TWO_CARDS[-1].value:
-
-                PLAYER_ONE.add_cards(PLAYER_ONE_CARDS)
-                PLAYER_ONE.add_cards(PLAYER_TWO_CARDS)
-                AT_WAR = False
-
-            elif PLAYER_ONE_CARDS[-1].value < PLAYER_TWO_CARDS[-1].value:
-
-                PLAYER_TWO.add_cards(PLAYER_TWO_CARDS)
-                PLAYER_TWO.add_cards(PLAYER_ONE_CARDS)
-                AT_WAR = False
-                break
-
-            else:
-                print("YOU ARE AT WAR!")
-
-                if len(PLAYER_ONE.all_cards) <= 5:
-                    print("Player 2 WINS!")
+                    PLAYER_ONE.add_cards(PLAYER_ONE_CARDS)
+                    PLAYER_ONE.add_cards(PLAYER_TWO_CARDS)
                     AT_WAR = False
-                    GAME_ON = False
 
-                elif len(PLAYER_TWO.all_cards) <= 5:
-                    print("Player 1 WINS!")
-                    GAME_ON = False
+                elif PLAYER_ONE_CARDS[-1].value < PLAYER_TWO_CARDS[-1].value:
+
+                    PLAYER_TWO.add_cards(PLAYER_TWO_CARDS)
+                    PLAYER_TWO.add_cards(PLAYER_ONE_CARDS)
+                    AT_WAR = False
                     break
 
                 else:
-                    for num in range(5):
-                        PLAYER_ONE_CARDS.append(PLAYER_ONE.remove_one)
-                        PLAYER_TWO_CARDS.append(PLAYER_TWO.remove_one)
-        except AttributeError:
-            AT_WAR = False
+                    print("YOU ARE AT WAR!")
+
+                    if len(PLAYER_ONE.all_cards) <= 5:
+                        print("Player 2 WINS!")
+                        AT_WAR = False
+                        GAME_ON = False
+
+                    elif len(PLAYER_TWO.all_cards) <= 5:
+                        print("Player 1 WINS!")
+                        GAME_ON = False
+                        break
+
+                    else:
+                        for num in range(5):
+                            PLAYER_ONE_CARDS.append(PLAYER_ONE.remove_one)
+                            PLAYER_TWO_CARDS.append(PLAYER_TWO.remove_one)
+            except AttributeError:
+                AT_WAR = False

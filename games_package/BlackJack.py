@@ -273,94 +273,95 @@ def tie(player, dealer):  # tie
     print("PUSH! Dealer and player tie!")
 
 
-# GAME LOOP
-while True:
-
-    # welcome
-    wel = "WELCOME TO BALCKJACK"
-    print('\n', *wel)
-    print()
-
-    # CARDS
-    deck = Deck()
-    deck.shuffle()
-
-    # DEALING CARDS
-    player_hand = Hand()
-    player_hand.add_card(deck.deal())
-    player_hand.add_card(deck.deal())
-
-    dealer_hand = Hand()
-    dealer_hand.add_card(deck.deal())
-    dealer_hand.add_card(deck.deal())
-
-    # CHIPS AND BET
+if __name__ == "__main__":
+    # GAME LOOP
     while True:
-        try:
-            total = int(input("Enter total starting chips: "))
-            if isinstance(total, int):
-                player_chips = Chips(total)
-                bet(player_chips)
-                break
-            else:
-                raise ValueError
-        except ValueError:
-            print("Invalid input! Try Again!")
 
-    # SHOWING CARDS
-    show_some_cards(player_hand, dealer_hand)
+        # welcome
+        wel = "WELCOME TO BALCKJACK"
+        print('\n', *wel)
+        print()
 
-    while playing:
+        # CARDS
+        deck = Deck()
+        deck.shuffle()
 
-        # HIT OR STAND
-        hit_or_stand(deck, player_hand)
+        # DEALING CARDS
+        player_hand = Hand()
+        player_hand.add_card(deck.deal())
+        player_hand.add_card(deck.deal())
+
+        dealer_hand = Hand()
+        dealer_hand.add_card(deck.deal())
+        dealer_hand.add_card(deck.deal())
+
+        # CHIPS AND BET
+        while True:
+            try:
+                total = int(input("Enter total starting chips: "))
+                if isinstance(total, int):
+                    player_chips = Chips(total)
+                    bet(player_chips)
+                    break
+                else:
+                    raise ValueError
+            except ValueError:
+                print("Invalid input! Try Again!")
 
         # SHOWING CARDS
         show_some_cards(player_hand, dealer_hand)
 
-        # CHECK FOR PLAYER BUST
-        if player_hand.value > 21:
+        while playing:
 
-            player_busts(player_hand, dealer_hand, player_chips)
-            break
+            # HIT OR STAND
+            hit_or_stand(deck, player_hand)
 
-        if player_hand.value <= 21:
+            # SHOWING CARDS
+            show_some_cards(player_hand, dealer_hand)
 
-            while dealer_hand.value < 17:  # hit dealer
-                hit(deck, dealer_hand)
+            # CHECK FOR PLAYER BUST
+            if player_hand.value > 21:
 
-            show_all_cards(player_hand, dealer_hand)  # show all cards
-
-            if dealer_hand.value > 21:
-                dealer_busts(player_hand, dealer_hand, player_chips)
+                player_busts(player_hand, dealer_hand, player_chips)
                 break
 
-            elif dealer_hand.value > player_hand.value:
-                dealer_wins(player_hand, dealer_hand, player_chips)
-                break
+            if player_hand.value <= 21:
 
-            elif dealer_hand.value < player_hand.value:
-                player_wins(player_hand, dealer_hand, player_chips)
-                break
+                while dealer_hand.value < 17:  # hit dealer
+                    hit(deck, dealer_hand)
 
+                show_all_cards(player_hand, dealer_hand)  # show all cards
+
+                if dealer_hand.value > 21:
+                    dealer_busts(player_hand, dealer_hand, player_chips)
+                    break
+
+                elif dealer_hand.value > player_hand.value:
+                    dealer_wins(player_hand, dealer_hand, player_chips)
+                    break
+
+                elif dealer_hand.value < player_hand.value:
+                    player_wins(player_hand, dealer_hand, player_chips)
+                    break
+
+                else:
+                    tie(player_hand, dealer_hand)
+                    break
+
+            # PLAYER'S TOTAL CHIPS
+            print(f"\nPlayer's total chips: {player_chips.total}")
+
+            # PLAY AGAIN
+        try:
+            replay = input("\nWould you like to play again? Yes or No: ")
+            if replay.lower().startswith('y'):
+                playing = True
+                continue
+            elif replay.lower().startswith('n'):
+                print("Thank you for playing!")
+                playing = False
+                break
             else:
-                tie(player_hand, dealer_hand)
-                break
-
-        # PLAYER'S TOTAL CHIPS
-        print(f"\nPlayer's total chips: {player_chips.total}")
-
-        # PLAY AGAIN
-    try:
-        replay = input("\nWould you like to play again? Yes or No: ")
-        if replay.lower().startswith('y'):
-            playing = True
-            continue
-        elif replay.lower().startswith('n'):
-            print("Thank you for playing!")
-            playing = False
-            break
-        else:
-            raise ValueError
-    except ValueError:
-        print("Invalid input! Try again!")
+                raise ValueError
+        except ValueError:
+            print("Invalid input! Try again!")

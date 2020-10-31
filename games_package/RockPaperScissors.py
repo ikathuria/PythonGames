@@ -1,5 +1,4 @@
-"""
-This is a program to simulate the game of "Rock-Paper-Scissors" using python.
+"""This is a program to simulate the game of "Rock-Paper-Scissors" using python.
 
 This program uses the 'random' module when the player wants to play against the computer.
 """
@@ -34,7 +33,8 @@ def option():
 
     while True:
         try:
-            choice = input("\nWhat would you like to choose? Rock, Paper or Scissors: ")
+            choice = input(
+                "\nWhat would you like to choose? Rock, Paper or Scissors: ")
             choice = choice.lower()
             if choice.startswith('r'):
                 return options[0]
@@ -87,52 +87,54 @@ def win_check(player1_choice, player2_choice):
         pass
 
 
-# GAME ON
-GAME_ON = True
 
-while GAME_ON:
+if __name__ == "__main__":
+    # GAME ON
+    GAME_ON = True
 
-    # welcome
-    wel = "WELCOME TO ROCK-PAPER-SCISSORS"
-    print('\n', *wel)
-    print()
+    while GAME_ON:
 
-    # game start
-    choice = players()
+        # welcome
+        wel = "WELCOME TO ROCK-PAPER-SCISSORS"
+        print('\n', *wel)
+        print()
 
-    if choice == 1:
-        print("You will be playing against the computer!")
+        # game start
+        choice = players()
 
-        player1_choice = option()
-        computer_choice = options[random.randint(0, 2)]
-        player2_choice = "not playing"
+        if choice == 1:
+            print("You will be playing against the computer!")
 
-        win_check(player1_choice, computer_choice)
+            player1_choice = option()
+            computer_choice = options[random.randint(0, 2)]
+            player2_choice = "not playing"
 
-    elif choice == 2:
-        player1_choice = option()
-        player2_choice = option()
-        computer_choice = "not playing"
+            win_check(player1_choice, computer_choice)
 
-        win_check(player1_choice, player2_choice)
+        elif choice == 2:
+            player1_choice = option()
+            player2_choice = option()
+            computer_choice = "not playing"
 
-    else:
-        pass
+            win_check(player1_choice, player2_choice)
 
-    while True:
-        try:
-            replay = input("\nDo you want to play again? Enter Yes or No: ")
-            if isinstance(replay, str):
-                if replay.lower().startswith('y'):
-                    GAME_ON = True
-                    break
-                elif replay.lower().startswith('n'):
-                    print("\nThank you for playing!")
-                    GAME_ON = False
-                    break
+        else:
+            pass
+
+        while True:
+            try:
+                replay = input("\nDo you want to play again? Enter Yes or No: ")
+                if isinstance(replay, str):
+                    if replay.lower().startswith('y'):
+                        GAME_ON = True
+                        break
+                    elif replay.lower().startswith('n'):
+                        print("\nThank you for playing!")
+                        GAME_ON = False
+                        break
+                    else:
+                        raise ValueError
                 else:
                     raise ValueError
-            else:
-                raise ValueError
-        except ValueError:
-            print("Invalid input! Try again!")
+            except ValueError:
+                print("Invalid input! Try again!")
