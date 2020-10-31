@@ -83,7 +83,6 @@ while (1):
             print(i)
             time.sleep(1)
 
-        os.system("python games_package\\War.py")
         os.system("python games_package//War.py")
 
         print("Closing in 10 seconds")
