@@ -52,31 +52,32 @@ while (1):
     # blackjack
     if choice == 1:
         rules(BlackJack)
-        os.system("python games_package\\BlackJack.py")
+        os.system("python games_package//BlackJack.py")
 
     # hangman
     elif choice == 2:
         rules(Hangman)
-        os.system("python games_package\\Hangman.py")
+        os.system("python games_package//Hangman.py")
 
     # number guessing game
     elif choice == 3:
         rules(NumberGuessing)
-        os.system("python games_package\\NumberGuessing.py")
+        os.system("python games_package//NumberGuessing.py")
 
     # rock paper scissors
     elif choice == 4:
         rules(RockPaperScissors)
-        os.system("python games_package\\RockPaperScissors.py")
+        os.system("python games_package//RockPaperScissors.py")
 
     # nuer tic tac toe
     elif choice == 5:
         rules(TicTacToe)
-        os.system("python games_package\\TicTacToe.py")
+        os.system("python games_package//TicTacToe.py")
 
     # war
     elif choice == 6:
         rules(War)
+<<<<<<< HEAD
 
         print("Starting in 10 seconds")
         for i in range(1, 11):
@@ -84,6 +85,9 @@ while (1):
             time.sleep(1)
 
         os.system("python games_package\\War.py")
+=======
+        os.system("python games_package//War.py")
+>>>>>>> 377ccabd4797819927a0f54db980820d9b0d5597
 
         print("Closing in 10 seconds")
         for i in range(1, 11):
