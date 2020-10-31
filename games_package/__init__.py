@@ -94,4 +94,4 @@ while (1):
     else:
         print("Invalid option! Try again!")
 
-    # clearScreen()
+    clearScreen()
