@@ -1,2 +1,2 @@
 language = "python3"
-run = "python games_package//play.py"
+run = "python games//play.py"
