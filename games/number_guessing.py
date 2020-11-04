@@ -48,10 +48,6 @@ if __name__ == "__main__":
         print("Goodbye!")
 
     while GAME_ON:
-        WEL = "WELCOME TO NUMBER-GUESSING-GAME"  # welcome message
-        print('\n', *WEL)
-        print()
-
         # the 3 difficulty levels
         print("1. Piece of Cake")
         print("2. Let's Rock")

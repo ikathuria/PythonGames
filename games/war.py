@@ -135,13 +135,8 @@ if __name__ == "__main__":
         print("Goodbye!")
 
     while GAME_ON:
-
         # NUMBER OF ROUNDS
         ROUND_NUM = 0
-
-        WEL = "WELCOME TO WAR"  # welcome message
-        print('\n', *WEL)
-        print()
 
         while True:
             ROUND_NUM += 1

@@ -64,7 +64,8 @@ outcome is reached."""}
 def clear_screen():
     """Clears screen using the `os` module."""
 
-    time.sleep(1.5)
+    print("\nCLOSING IN 5 SECONDS")
+    time.sleep(5)
 
     if os.name == 'posix':  # for mac and linux
         _ = os.system('clear')
@@ -90,9 +91,11 @@ def rules(name_of_game):
 
 
 while True:
-    WEL = 'WELCOME TO PYTHON GAMES'
-    print('\n', *WEL)
-    print("\n1. BlackJack")
+    WEL = "\nWELCOME TO PYTHON GAMES"  # welcome to python games
+    print(*WEL, end="\n\n")
+
+    # the game choices
+    print("1. BlackJack")
     print("2. Hangman")
     print("3. Number Guessing Game")
     print("4. Rock Paper Scissors")
@@ -112,38 +115,51 @@ while True:
 
     # blackjack
     if choice == 1:
+        WEL = "\nWELCOME TO BALCKJACK"
+        print(*WEL, end="\n\n")
+
         rules('blackjack')
         os.system("python games//blackjack.py")
 
     # hangman
     elif choice == 2:
-        rules('hangman')
-        os.system("python games//hangman.py")
+        WEL = "\nUNDER CONSTRUCTION! CHECK BACK SOON!"
+        print(*WEL, end="\n\n")
+
+        #rules('hangman')
+        #os.system("python games//hangman.py")
 
     # number guessing game
     elif choice == 3:
+        WEL = "\nWELCOME TO NUMBER-GUESSING-GAME"
+        print(*WEL, end="\n\n")
+
         rules('number_guessing')
         os.system("python games//number_guessing.py")
 
     # rock paper scissors
     elif choice == 4:
+        WEL = "\nWELCOME TO ROCK-PAPER-SCISSORS"
+        print(*WEL, end="\n\n")
+
         rules('rock_paper_scissors')
         os.system("python games//rock_paper_scissors.py")
 
     # nuer tic tac toe
     elif choice == 5:
+        WEL = "\nWELCOME TO TIC-TAC-TOE"
+        print(*WEL, end="\n\n")
+
         rules('tic_tac_toe')
         os.system("python games//tic_tac_toe.py")
 
     # war
     elif choice == 6:
+        WEL = "\nWELCOME TO WAR"
+        print(*WEL, end="\n\n")
+
         rules('war')
         os.system("python games//war.py")
-
-        print("Closing in 5 seconds")
-        for i in range(1, 6):
-            print(i)
-            time.sleep(1)
 
     # exit
     elif choice == 7:

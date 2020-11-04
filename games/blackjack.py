@@ -42,7 +42,7 @@ def replay():
     while True:
         try:
             play_again = input(
-                "\nDo you want to play again? Enter Yes or No: ")
+                "\nDo you want to continue playing? Enter Yes or No: ")
 
             if not play_again.isdigit():
                 if play_again.lower().startswith('y'):
@@ -185,7 +185,7 @@ class Chips:
     def win_bet(self):
         """The function to add chips upon winning bet."""
 
-        self.total += 2*self.bet
+        self.total += self.bet
 
     def lose_bet(self):
         """The function to remove chips upon losing bet."""
@@ -205,11 +205,9 @@ def bet(chips):
         try:
             chips.bet = int(input("Make a bet: "))
 
-            if chips.bet > chips.total:
-                print(f"Not enough chips! You have {chips.total} left!")
-
-            else:
+            if chips.bet in range(1, chips.total+1):
                 return chips.bet
+            print(f"Not enough chips! You have {chips.total} left!")
 
         except ValueError:
             print("Invalid input! Try Again!")
@@ -375,10 +373,6 @@ if __name__ == "__main__":
         print("Goodbye!")
 
     while GAME_ON:
-        WEL = "WELCOME TO BALCKJACK"  # welcome message
-        print('\n', *WEL)
-        print()
-
         new_deck = Deck()  # initalizing deck
         new_deck.shuffle()  # shuffling deck
 
@@ -431,8 +425,13 @@ if __name__ == "__main__":
             else:
                 tie()
 
-            # displaying final chips
-            print(f"\nPlayer's total chips: {player_chips.total}")
+        # displaying final chips
+        print(f"\nPlayer's total chips: {player_chips.total}")
 
-        # asking the user if they want to play again
-        GAME_ON = replay()
+        if player_chips.total > 0:
+            # asking the user if they want to play again
+            GAME_ON = replay()
+        else:
+            print("You lost all your chips! Game Over!")
+            print("Thank you for playing!")
+            GAME_ON = False

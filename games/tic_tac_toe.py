@@ -195,10 +195,6 @@ if __name__ == "__main__":
         print("Goodbye!")
 
     while GAME_ON:
-        WEL = "WELCOME TO TIC-TAC-TOE"  # welcome message
-        print('\n', *WEL)
-        print()
-
         # starting game display
         THE_KEY = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
         GAME_DISPLAY = ['0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']

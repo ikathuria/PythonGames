@@ -164,10 +164,6 @@ if __name__ == "__main__":
         print("Goodbye!")
 
     while GAME_ON:
-        WEL = "WELCOME TO ROCK-PAPER-SCISSORS"  # welcome message
-        print('\n', *WEL)
-        print()
-
         # game start
         NUM_OF_PLAYERS = who_is_playing()
 
