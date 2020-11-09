@@ -9,7 +9,6 @@ user has to attempt to guess. It has 3 levels of difficulty.
 This program uses the `random` module to generate random ranges and answers.
 
 """
-
 import random
 
 
@@ -41,7 +40,7 @@ def replay():
 
 if __name__ == "__main__":
     PLAY_GAME = input("\nReady to play? Enter Yes or No: ")
-    # Game on set to true is player is ready
+    # Game on set to true if player is ready
     GAME_ON = bool(PLAY_GAME.lower()[0] == 'y')
 
     if not GAME_ON:

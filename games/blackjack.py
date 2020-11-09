@@ -26,7 +26,6 @@ This program uses the 'random' module to shuffle the "Deck of Cards", which is
 made using classes.
 
 """
-
 import random
 
 
@@ -364,7 +363,7 @@ def tie():  # tie
 
 if __name__ == "__main__":
     PLAY_GAME = input("\nReady to play? Enter Yes or No: ")
-    # Game on set to true is player is ready
+    # Game on set to true if player is ready
     GAME_ON = bool(PLAY_GAME.lower()[0] == 'y')
 
     player_chips = Chips()  # setting up player's chips

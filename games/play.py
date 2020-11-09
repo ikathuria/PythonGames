@@ -123,11 +123,11 @@ while True:
 
     # hangman
     elif choice == 2:
-        WEL = "\nUNDER CONSTRUCTION! CHECK BACK SOON!"
+        WEL = "\nWELCOME TO HANGMAN"
         print(*WEL, end="\n\n")
 
-        #rules('hangman')
-        #os.system("python games//hangman.py")
+        rules('hangman')
+        os.system("python games//hangman.py")
 
     # number guessing game
     elif choice == 3:

@@ -188,7 +188,7 @@ def place_marker(board, marker, pos):
 
 if __name__ == "__main__":
     PLAY_GAME = input("\nReady to play? Enter Yes or No: ")
-    # Game on set to true is player is ready
+    # Game on set to true if player is ready
     GAME_ON = bool(PLAY_GAME.lower()[0] == 'y')
 
     if not GAME_ON:
@@ -206,6 +206,7 @@ if __name__ == "__main__":
 
         PLAYER1, PLAYER2 = choosing_marker()  # markers set
 
+        # turns
         while TURN in ("Player 1", "Player 2"):
             if TURN == "Player 1":  # player one's turn
 
