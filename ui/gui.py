@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
 import os
 # personal modules
 import rulebook
@@ -124,6 +125,8 @@ class Ui_MainWindow(object):
         self.exitButton = QtWidgets.QPushButton(self.exit_widget)
         self.exitButton.setObjectName("exitButton")
         self.horizontalLayout.addWidget(self.exitButton)
+        # on click
+        self.exitButton.clicked.connect(self.exit_application)
 
         # CENTRAL WIDGET ENDPOINT
         MainWindow.setCentralWidget(self.centralwidget)
@@ -205,10 +208,14 @@ class Ui_MainWindow(object):
 
         self.rules_label.setText(game + '\n\n' + rulebook.rule_book(game))
         self.rules_label.setAlignment(QtCore.Qt.AlignJustify)
+    
+    def exit_application(self):
+        """Exits."""
+
+        sys.exit()
 
 
-if __name__ == "__main__":
-    import sys
+def main():
     app = QtWidgets.QApplication(sys.argv)
 
     MainWindow = QtWidgets.QMainWindow()
@@ -218,3 +225,6 @@ if __name__ == "__main__":
     MainWindow.show()
 
     sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    main()
