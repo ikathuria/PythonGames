@@ -3,8 +3,10 @@ import sys
 import os
 # personal modules
 import rulebook
+import ttt
 
 
+# MAIN WINDOW #######################################################################################
 class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
@@ -68,12 +70,20 @@ class Ui_MainWindow(object):
         # making the buttons work
         self.blackjack_button.clicked.connect(
             lambda: self.show_rules('Blackjack'))
+        self.blackjack_button.clicked.connect(
+            lambda: self.start_game('Blackjack'))
+        
         self.hangman_button.clicked.connect(lambda: self.show_rules('Hangman'))
+        
         self.num_guess_button.clicked.connect(
             lambda: self.show_rules('Number guessing'))
+        
         self.rps_button.clicked.connect(
             lambda: self.show_rules('Rock Paper Scissors'))
+        
         self.ttt_button.clicked.connect(lambda: self.show_rules('Tic Tac Toe'))
+        self.ttt_button.clicked.connect(lambda: self.start_game('Tic Tac Toe'))
+        
         self.war_button.clicked.connect(lambda: self.show_rules('War'))
 
         # game widget to run the actual game hopefully #
@@ -208,6 +218,19 @@ class Ui_MainWindow(object):
 
         self.rules_label.setText(game + '\n\n' + rulebook.rule_book(game))
         self.rules_label.setAlignment(QtCore.Qt.AlignJustify)
+    
+
+    def start_game(self, game):
+        """Start game."""
+
+        if game.lower() == 'tic tac toe':
+            TicTacToe = QtWidgets.QWidget()
+            ui = ttt.Ui_TicTacToe()
+            ui.setupUi(TicTacToe)
+
+            TicTacToe.setParent(self.games_widget)
+
+            TicTacToe.show()
     
     def exit_application(self):
         """Exits."""
