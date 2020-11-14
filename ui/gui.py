@@ -1,8 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+import time
 import sys
 import os
 # personal modules
 import rulebook
+from players import *
 import ttt
 
 
@@ -68,23 +70,35 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.war_button, 5, 0, 1, 1)
 
         # making the buttons work
+        # blackjack
         self.blackjack_button.clicked.connect(
             lambda: self.show_rules('Blackjack'))
         self.blackjack_button.clicked.connect(
             lambda: self.start_game('Blackjack'))
-        
+
+        # hangman
         self.hangman_button.clicked.connect(lambda: self.show_rules('Hangman'))
-        
+        self.hangman_button.clicked.connect(lambda: self.start_game('Hangman'))
+
+        # number guessing
         self.num_guess_button.clicked.connect(
             lambda: self.show_rules('Number guessing'))
-        
+        self.num_guess_button.clicked.connect(
+            lambda: self.start_game('Number guessing'))
+
+        # rock paper scissors
         self.rps_button.clicked.connect(
             lambda: self.show_rules('Rock Paper Scissors'))
-        
+        self.rps_button.clicked.connect(
+            lambda: self.start_game('Rock Paper Scissors'))
+
+        # tic tac toe
         self.ttt_button.clicked.connect(lambda: self.show_rules('Tic Tac Toe'))
         self.ttt_button.clicked.connect(lambda: self.start_game('Tic Tac Toe'))
-        
+
+        # war
         self.war_button.clicked.connect(lambda: self.show_rules('War'))
+        self.war_button.clicked.connect(lambda: self.start_game('War'))
 
         # game widget to run the actual game hopefully #
         self.games_widget = QtWidgets.QWidget(self.centralwidget)
@@ -152,26 +166,6 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-        # actions
-        self.actionBlackjack = QtWidgets.QAction(MainWindow)
-        self.actionBlackjack.setObjectName("actionBlackjack")
-
-        self.actionHangman = QtWidgets.QAction(MainWindow)
-        self.actionHangman.setObjectName("actionHangman")
-
-        self.actionNumber_Guessing = QtWidgets.QAction(MainWindow)
-        self.actionNumber_Guessing.setObjectName("actionNumber_Guessing")
-
-        self.actionRock_Paper_Scissors = QtWidgets.QAction(MainWindow)
-        self.actionRock_Paper_Scissors.setObjectName(
-            "actionRock_Paper_Scissors")
-
-        self.actionTic_Tac_Toe = QtWidgets.QAction(MainWindow)
-        self.actionTic_Tac_Toe.setObjectName("actionTic_Tac_Toe")
-
-        self.actionWar = QtWidgets.QAction(MainWindow)
-        self.actionWar.setObjectName("actionWar")
-
         # calling retransalateUi
         self.retranslateUi(MainWindow)
 
@@ -204,34 +198,45 @@ class Ui_MainWindow(object):
         # exit button text
         self.exitButton.setText(_translate("MainWindow", "EXIT"))
 
-        self.actionBlackjack.setText(_translate("MainWindow", "Blackjack"))
-        self.actionHangman.setText(_translate("MainWindow", "Hangman"))
-        self.actionNumber_Guessing.setText(
-            _translate("MainWindow", "Number Guessing"))
-        self.actionRock_Paper_Scissors.setText(
-            _translate("MainWindow", "Rock Paper Scissors"))
-        self.actionTic_Tac_Toe.setText(_translate("MainWindow", "Tic Tac Toe"))
-        self.actionWar.setText(_translate("MainWindow", "War"))
-
     def show_rules(self, game):
         """Rules."""
 
         self.rules_label.setText(game + '\n\n' + rulebook.rule_book(game))
         self.rules_label.setAlignment(QtCore.Qt.AlignJustify)
-    
 
     def start_game(self, game):
         """Start game."""
 
-        if game.lower() == 'tic tac toe':
+        game = game.lower()
+
+        if game == 'blackjack':
+            pass
+
+        elif game == 'hangman':
+            pass
+
+        elif game == 'number guessing':
+            pass
+
+        elif game == 'rock paper scissors':
+            players = QtWidgets.QWidget()
+            ui = Ui_players()
+            ui.setupUi(players)
+
+            players.setParent(self.games_widget)
+            players.show()
+
+        elif game == 'tic tac toe':
             TicTacToe = QtWidgets.QWidget()
             ui = ttt.Ui_TicTacToe()
             ui.setupUi(TicTacToe)
 
             TicTacToe.setParent(self.games_widget)
-
             TicTacToe.show()
-    
+        
+        elif game == 'war':
+            pass
+
     def exit_application(self):
         """Exits."""
 
@@ -248,6 +253,7 @@ def main():
     MainWindow.show()
 
     sys.exit(app.exec_())
+
 
 if __name__ == "__main__":
     main()
