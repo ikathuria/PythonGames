@@ -5,15 +5,25 @@ button_style = """QPushButton { background-color: rgb(0, 0, 0);
                                  color: rgb(255, 255, 255);
                                  border-radius: 10px; }
         
-        QPushButton::pressed { background-color: rgb(255, 255, 255);
-                               color: rgb(0, 0, 0);
-                               border: 1px solid rgb(0, 0, 0);
-                               border-radius: 10px; }
-        
-        QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
-                                color: rgb(75, 75, 75); }"""
+                QPushButton::pressed { background-color: rgb(255, 255, 255);
+                                    color: rgb(0, 0, 0);
+                                    border: 1px solid rgb(0, 0, 0);
+                                    border-radius: 10px; }
+                
+                QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
+                                        color: rgb(75, 75, 75); }"""
 
-grid_style = "background-color: rgb(255, 255, 255); border: 3px solid rgb(0, 0, 0);"
+grid_style = """QPushButton { background-color: rgb(255, 255, 255); }"""
+
+x_clicked_style = """QPushButton::disabled { background-image: url(ui/images/x.png);
+                                             background-repeat: no-repeat;
+                                             background-position: center;
+                                             color: rgb(255, 255, 255); }"""
+
+o_clicked_style = """QPushButton::disabled { background-image: url(ui/images/o.png);
+                                             background-repeat: no-repeat;
+                                             background-position: center;
+                                             color: rgb(255, 255, 255); }"""
 
 
 class Ui_TicTacToe(object):
@@ -57,15 +67,15 @@ class Ui_TicTacToe(object):
         self.grid.setMinimumSize(QtCore.QSize(500, 500))
         self.grid.setMaximumSize(QtCore.QSize(500, 500))
         # font size
-        font.setPointSize(20)
+        font.setPointSize(1)
         # stylesheet
         self.grid.setStyleSheet("background-color: rgb(0, 0, 0);")
         # object name
         self.grid.setObjectName("grid")
         # layout
         self.gridLayout = QtWidgets.QGridLayout(self.grid)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setSpacing(10)
+        self.gridLayout.setContentsMargins(5, 5, 5, 5)
+        self.gridLayout.setSpacing(5)
         self.gridLayout.setObjectName("gridLayout")
 
         # the buttons
@@ -293,6 +303,10 @@ class Ui_TicTacToe(object):
         self.turn == 'X'
         self.count = 0
 
+        for row in self.buttons:
+            for button in row:
+                button.setStyleSheet(grid_style)
+
         self.retranslateUi(TicTacToe)
         QtCore.QMetaObject.connectSlotsByName(TicTacToe)
 
@@ -320,12 +334,17 @@ class Ui_TicTacToe(object):
         self.count += 1
 
         button.setEnabled(False)
+        opacity = QtWidgets.QGraphicsOpacityEffect()
+        opacity.setOpacity(1)
+        button.setGraphicsEffect(opacity)
 
         if self.turn == 'X':
-            button.setText("X")
+            button.setText('X')
+            button.setStyleSheet(x_clicked_style)
 
         else:
-            button.setText("O")
+            button.setText('O')
+            button.setStyleSheet(o_clicked_style)
 
         if self.win_check():
             self.text.setText(
