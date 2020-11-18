@@ -2,68 +2,78 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import time
 import sys
 import os
+
 # personal modules
 import rulebook
-from players import *
-import ttt
+from num_guess import Ui_num_guessing
+from rps import Ui_RockPaperScissors
+from ttt import Ui_TicTacToe
 
 
-# MAIN WINDOW #######################################################################################
+# MAIN WINDOW #####################################################
 class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
-        # making main window
+        # object name
         MainWindow.setObjectName("MainWindow")
-
+        # size
         MainWindow.resize(1120, 850)  # setting size
         MainWindow.setMaximumSize(QtCore.QSize(1120, 850))
-
-        icon = QtGui.QIcon()  # setting icon
+        # font
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI Light")
+        MainWindow.setFont(font)
+        # icon
+        icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("ui/images/favicon.png"),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
 
-        # CENTRAL WIDGET
+        # CENTRAL WIDGET ###########################################
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
-        # games box with buttons #
+        # GAMES GRUPBOX ############################################
         self.games_box = QtWidgets.QGroupBox(self.centralwidget)
-        # game box size
+        # size
         self.games_box.setGeometry(QtCore.QRect(10, 10, 350, 325))
         self.games_box.setMinimumSize(QtCore.QSize(350, 0))
         self.games_box.setMaximumSize(QtCore.QSize(350, 325))
-        # game box font
-        font = QtGui.QFont()
-        font.setFamily("Microsoft JhengHei UI Light")
+        # font
         font.setPointSize(10)
         self.games_box.setFont(font)
         # object name
         self.games_box.setObjectName("games_box")
-        # game box layout
+        # layout
         self.gridLayout = QtWidgets.QGridLayout(self.games_box)
         self.gridLayout.setObjectName("gridLayout")
-        # game buttons
+
+        # THE BUTTONS #####
         # blackjack
         self.blackjack_button = QtWidgets.QPushButton(self.games_box)
         self.blackjack_button.setObjectName("blackjack_button")
         self.gridLayout.addWidget(self.blackjack_button, 0, 0, 1, 1)
+
         # hangman
         self.hangman_button = QtWidgets.QPushButton(self.games_box)
         self.hangman_button.setObjectName("hangman_button")
         self.gridLayout.addWidget(self.hangman_button, 1, 0, 1, 1)
+
         # num guess
         self.num_guess_button = QtWidgets.QPushButton(self.games_box)
         self.num_guess_button.setObjectName("num_guess_button")
         self.gridLayout.addWidget(self.num_guess_button, 2, 0, 1, 1)
+
         # rps
         self.rps_button = QtWidgets.QPushButton(self.games_box)
         self.rps_button.setObjectName("rps_button")
         self.gridLayout.addWidget(self.rps_button, 3, 0, 1, 1)
+
         # ttt
         self.ttt_button = QtWidgets.QPushButton(self.games_box)
         self.ttt_button.setObjectName("ttt_button")
         self.gridLayout.addWidget(self.ttt_button, 4, 0, 1, 1)
+
         # war
         self.war_button = QtWidgets.QPushButton(self.games_box)
         self.war_button.setObjectName("war_button")
@@ -100,18 +110,22 @@ class Ui_MainWindow(object):
         self.war_button.clicked.connect(lambda: self.show_rules('War'))
         self.war_button.clicked.connect(lambda: self.start_game('War'))
 
-        # game widget to run the actual game hopefully #
+        # GAME WIDGET #################################################
         self.games_widget = QtWidgets.QWidget(self.centralwidget)
+        # size
         self.games_widget.setGeometry(QtCore.QRect(380, 10, 730, 775))
+        # object name
         self.games_widget.setObjectName("games_widget")
 
-        # scroll area for the rules #
+        # SCROLL AREA FOR RULES #######################################
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         # size
         self.scrollArea.setGeometry(QtCore.QRect(10, 345, 350, 385))
         self.scrollArea.setWidgetResizable(True)
         # object name
         self.scrollArea.setObjectName("scrollArea")
+
+        # SCROLL AREA WIDGET CONTENTS
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
         self.scrollAreaWidgetContents_2.setGeometry(
             QtCore.QRect(0, 0, 348, 383))
@@ -121,7 +135,8 @@ class Ui_MainWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(
             self.scrollAreaWidgetContents_2)
         self.verticalLayout.setObjectName("verticalLayout")
-        # the label
+
+        # RULES LABEL #####
         self.rules_label = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
         # font
         font = QtGui.QFont()
@@ -155,20 +170,19 @@ class Ui_MainWindow(object):
         # CENTRAL WIDGET ENDPOINT
         MainWindow.setCentralWidget(self.centralwidget)
 
-        # MENU BAR
+        # MENU BAR #####
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
 
-        # STATUS BAR
+        # STATUS BAR #####
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         # calling retransalateUi
         self.retranslateUi(MainWindow)
-
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -216,24 +230,29 @@ class Ui_MainWindow(object):
             pass
 
         elif game == 'number guessing':
-            pass
+            num_guessing = QtWidgets.QWidget()
+            ui = Ui_num_guessing()
+            ui.setupUi(num_guessing)
+
+            num_guessing.setParent(self.games_widget)
+            num_guessing.show()
 
         elif game == 'rock paper scissors':
-            players = QtWidgets.QWidget()
-            ui = Ui_players()
-            ui.setupUi(players)
+            RockPaperScissors = QtWidgets.QWidget()
+            ui = Ui_RockPaperScissors()
+            ui.setupUi(RockPaperScissors)
 
-            players.setParent(self.games_widget)
-            players.show()
+            RockPaperScissors.setParent(self.games_widget)
+            RockPaperScissors.show()
 
         elif game == 'tic tac toe':
             TicTacToe = QtWidgets.QWidget()
-            ui = ttt.Ui_TicTacToe()
+            ui = Ui_TicTacToe()
             ui.setupUi(TicTacToe)
 
             TicTacToe.setParent(self.games_widget)
             TicTacToe.show()
-        
+
         elif game == 'war':
             pass
 

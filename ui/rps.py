@@ -2,6 +2,22 @@
 
 # imports
 from PyQt5 import QtCore, QtGui, QtWidgets
+from random import choice
+
+the_choices = ['Rock', 'Paper', 'Scissors']
+
+# for stylesheet
+button_style = """QPushButton { background-color: rgb(0, 0, 0);
+                                 color: rgb(255, 255, 255);
+                                 border-radius: 10px; }
+        
+        QPushButton::pressed { background-color: rgb(255, 255, 255);
+                               color: rgb(0, 0, 0);
+                               border: 1px solid rgb(0, 0, 0);
+                               border-radius: 10px; }
+        
+        QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
+                                color: rgb(75, 75, 75); }"""
 
 
 class Ui_RockPaperScissors(object):
@@ -21,12 +37,12 @@ class Ui_RockPaperScissors(object):
         RockPaperScissors.setFont(font)
         # stylesheet
         RockPaperScissors.setStyleSheet(
-            "background-color: rgb(255, 217, 218);")
+            "background-color: rgb(255, 255, 255);")
         # layout
         self.main_layout = QtWidgets.QGridLayout(RockPaperScissors)
         self.main_layout.setObjectName("main_layout")
 
-        # WELCOME ##############################################
+        # WELCOME ##############################################################
         self.welcome = QtWidgets.QLabel(RockPaperScissors)
         # size
         self.welcome.setMinimumSize(QtCore.QSize(700, 0))
@@ -34,7 +50,8 @@ class Ui_RockPaperScissors(object):
         font.setPointSize(23)
         self.welcome.setFont(font)
         # stylesheet
-        self.welcome.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.welcome.setStyleSheet("background-color: rgb(255, 255, 255);"
+                                   "border: 1px solid rgb(0, 0, 0);")
         # allignment
         self.welcome.setAlignment(QtCore.Qt.AlignCenter)
         # object name
@@ -42,8 +59,11 @@ class Ui_RockPaperScissors(object):
         # adding to main widget
         self.main_layout.addWidget(self.welcome, 0, 0, 1, 1)
 
-        # players outer widget ##################################################
+        # PLAYERS OUTER WIDGET ##############################################
         self.players_widget = QtWidgets.QWidget(RockPaperScissors)
+        # size
+        self.players_widget.setMinimumSize(QtCore.QSize(700, 500))
+        self.players_widget.setMaximumSize(QtCore.QSize(700, 500))
         # font
         font.setPointSize(20)
         self.players_widget.setFont(font)
@@ -51,10 +71,36 @@ class Ui_RockPaperScissors(object):
         self.players_widget.setObjectName("players_widget")
         # layout
         self.players_layout = QtWidgets.QGridLayout(self.players_widget)
+        self.players_layout.setContentsMargins(15, 0, 15, 0)
+        self.players_layout.setSpacing(10)
         self.players_layout.setObjectName("players_layout")
+
+        # PLAYER ##########################################################
+        # CHOICE IMAGE #####
+        self.player_image = QtWidgets.QLabel(self.players_widget)
+        # size
+        self.player_image.setMinimumSize(QtCore.QSize(230, 230))
+        self.player_image.setMaximumSize(QtCore.QSize(230, 230))
+        # stylesheet
+        shadow = QtWidgets.QGraphicsDropShadowEffect()
+        self.player_image.setGraphicsEffect(shadow)
+        self.player_image.setStyleSheet("border: 1px solid rgb(0, 0, 0);")
+        # image
+        self.player_image.setPixmap(QtGui.QPixmap("ui/images/rock.png"))
+        self.player_image.setScaledContents(True)
+        # allignment
+        self.player_image.setAlignment(QtCore.Qt.AlignCenter)
+        # object name
+        self.player_image.setObjectName("player_image")
+
+        # adding widget 1 to outer widget
+        self.players_layout.addWidget(self.player_image, 0, 0, 1, 1)
 
         # VS. LABEL inside players_widget ##########################
         self.vs_label = QtWidgets.QLabel(self.players_widget)
+        # size
+        self.vs_label.setMinimumSize(QtCore.QSize(175, 0))
+        self.vs_label.setMaximumSize(QtCore.QSize(175, 230))
         # font
         font.setPointSize(28)
         self.vs_label.setFont(font)
@@ -65,202 +111,97 @@ class Ui_RockPaperScissors(object):
         # layout
         self.players_layout.addWidget(self.vs_label, 0, 1, 1, 1)
 
-        # PLAYER 2 ################################################
-        self.widget_2 = QtWidgets.QWidget(self.players_widget)
-        # size
-        self.widget_2.setMinimumSize(QtCore.QSize(300, 0))
-        # object name
-        self.widget_2.setObjectName("widget_2")
-        # layout
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.widget_2)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-
+        # COMPUTER #################################################
         # CHOICE IMAGE #####
-        self.choice_2 = QtWidgets.QLabel(self.widget_2)
+        self.computer_image = QtWidgets.QLabel(self.players_widget)
         # size
-        self.choice_2.setMinimumSize(QtCore.QSize(220, 220))
-        self.choice_2.setMaximumSize(QtCore.QSize(220, 220))
+        self.computer_image.setMinimumSize(QtCore.QSize(230, 230))
+        self.computer_image.setMaximumSize(QtCore.QSize(230, 230))
+        # stylesheet
+        shadow = QtWidgets.QGraphicsDropShadowEffect()
+        self.computer_image.setGraphicsEffect(shadow)
+        self.computer_image.setStyleSheet("border: 1px solid rgb(0, 0, 0);")
         # image
-        self.choice_2.setPixmap(QtGui.QPixmap("ui/images/rock.png"))
-        self.choice_2.setScaledContents(True)
+        self.computer_image.setPixmap(QtGui.QPixmap("ui/images/rock.png"))
+        self.computer_image.setScaledContents(True)
         # allignment
-        self.choice_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.computer_image.setAlignment(QtCore.Qt.AlignCenter)
         # object name
-        self.choice_2.setObjectName("choice_2")
-        # adding to widget 2
-        self.gridLayout_2.addWidget(self.choice_2, 0, 0, 1, 1)
-
-        # ROCK #####
-        self.rock_2 = QtWidgets.QPushButton(self.widget_2)
-        # size
-        self.rock_2.setMinimumSize(QtCore.QSize(150, 100))
-        self.rock_2.setMaximumSize(QtCore.QSize(220, 100))
-        # font
-        font.setPointSize(20)
-        self.rock_2.setFont(font)
-        # stylesheet
-        self.rock_2.setStyleSheet("QPushButton {\n"
-                                  "background-color: rgb(167, 167, 167);\n"
-                                  "color: rgb(255, 255, 255);\n"
-                                  "}\n"
-                                  "\n"
-                                  "QPushButton::pressed {\n"
-                                  "background-color : white;\n"
-                                  "color: rgb(0, 0, 0);\n"
-                                  "}")
-        # object name
-        self.rock_2.setObjectName("rock_2")
-        # adding to widget 2
-        self.gridLayout_2.addWidget(self.rock_2, 1, 0, 1, 1)
-
-        # PAPER #####
-        self.paper_2 = QtWidgets.QPushButton(self.widget_2)
-        # size
-        self.paper_2.setMinimumSize(QtCore.QSize(150, 100))
-        self.paper_2.setMaximumSize(QtCore.QSize(220, 100))
-        # font
-        font.setPointSize(20)
-        self.paper_2.setFont(font)
-        # stylesheet
-        self.paper_2.setStyleSheet("QPushButton {\n"
-                                   "background-color: rgb(216, 255, 253);\n"
-                                   "color: rgb(0, 0, 0);\n"
-                                   "}\n"
-                                   "\n"
-                                   "QPushButton::pressed {\n"
-                                   "background-color : rgb(0, 0, 0);\n"
-                                   "color: rgb(255, 255, 255);\n"
-                                   "}")
-        # object name
-        self.paper_2.setObjectName("paper_2")
-        # adding to widget 2
-        self.gridLayout_2.addWidget(self.paper_2, 2, 0, 1, 1)
-
-        # SCISSORS #####
-        self.scissors_2 = QtWidgets.QPushButton(self.widget_2)
-        # size
-        self.scissors_2.setMinimumSize(QtCore.QSize(150, 100))
-        self.scissors_2.setMaximumSize(QtCore.QSize(220, 100))
-        # font
-        font.setPointSize(20)
-        self.scissors_2.setFont(font)
-        # stylesheet
-        self.scissors_2.setStyleSheet("QPushButton {\n"
-                                      "background-color: rgb(255, 75, 75);\n"
-                                      "color: rgb(0, 0, 0);\n"
-                                      "}\n"
-                                      "\n"
-                                      "QPushButton::pressed {\n"
-                                      "background-color : white;\n"
-                                      "color: rgb(0, 0, 0);\n"
-                                      "}")
-        # object name
-        self.scissors_2.setObjectName("scissors_2")
-        # adding to widget 2
-        self.gridLayout_2.addWidget(self.scissors_2, 3, 0, 1, 1)
+        self.computer_image.setObjectName("computer_image")
 
         # adding widget 2 to outer widget
-        self.players_layout.addWidget(self.widget_2, 0, 2, 1, 1)
+        self.players_layout.addWidget(self.computer_image, 0, 2, 1, 1)
 
-        # PLAYER 1 ##########################################################
-        self.widget_1 = QtWidgets.QWidget(self.players_widget)
+        # BUTTONS ################################################
+        self.choices_widget = QtWidgets.QWidget(self.players_widget)
         # size
-        self.widget_1.setMinimumSize(QtCore.QSize(300, 0))
+        self.choices_widget.setMinimumSize(QtCore.QSize(700, 0))
         # object name
-        self.widget_1.setObjectName("widget_1")
+        self.choices_widget.setObjectName("choices_widget")
         # layout
-        self.gridLayout = QtWidgets.QGridLayout(self.widget_1)
-        self.gridLayout.setObjectName("gridLayout")
-
-        # CHOICE IMAGE #####
-        self.choice_1 = QtWidgets.QLabel(self.widget_1)
-        # size
-        self.choice_1.setMinimumSize(QtCore.QSize(220, 220))
-        self.choice_1.setMaximumSize(QtCore.QSize(220, 220))
-        # image
-        self.choice_1.setPixmap(QtGui.QPixmap("ui/images/rock.png"))
-        self.choice_1.setScaledContents(True)
-        # allignment
-        self.choice_1.setAlignment(QtCore.Qt.AlignCenter)
-        # object name
-        self.choice_1.setObjectName("choice_1")
-        # layout
-        self.gridLayout.addWidget(self.choice_1, 0, 0, 1, 1)
+        self.choices_layout = QtWidgets.QGridLayout(self.choices_widget)
+        self.choices_layout.setObjectName("choices_layout")
 
         # ROCK #####
-        self.rock_1 = QtWidgets.QPushButton(self.widget_1)
+        self.rock = QtWidgets.QPushButton(self.choices_widget)
         # size
-        self.rock_1.setMinimumSize(QtCore.QSize(100, 100))
-        self.rock_1.setMaximumSize(QtCore.QSize(220, 100))
+        self.rock.setMinimumSize(QtCore.QSize(100, 100))
+        self.rock.setMaximumSize(QtCore.QSize(200, 100))
         # font
         font.setPointSize(20)
-        self.rock_1.setFont(font)
+        self.rock.setFont(font)
         # stylesheet
-        self.rock_1.setStyleSheet("QPushButton {\n"
-                                  "background-color: rgb(167, 167, 167);\n"
-                                  "color: rgb(255, 255, 255);\n"
-                                  "}\n"
-                                  "\n"
-                                  "QPushButton::pressed {\n"
-                                  "background-color : white;\n"
-                                  "color: rgb(0, 0, 0);\n"
-                                  "}")
+        shadow = QtWidgets.QGraphicsDropShadowEffect()
+        self.rock.setGraphicsEffect(shadow)
+        self.rock.setStyleSheet(button_style)
         # object name
-        self.rock_1.setObjectName("rock_1")
+        self.rock.setObjectName("rock")
         # layout
-        self.gridLayout.addWidget(self.rock_1, 1, 0, 1, 1)
+        self.choices_layout.addWidget(self.rock, 0, 0, 1, 1)
 
         # PAPER #####
-        self.paper_1 = QtWidgets.QPushButton(self.widget_1)
+        self.paper = QtWidgets.QPushButton(self.choices_widget)
         # size
-        self.paper_1.setMinimumSize(QtCore.QSize(150, 100))
-        self.paper_1.setMaximumSize(QtCore.QSize(220, 100))
+        self.paper.setMinimumSize(QtCore.QSize(150, 100))
+        self.paper.setMaximumSize(QtCore.QSize(200, 100))
         # font
         font.setPointSize(20)
-        self.paper_1.setFont(font)
+        self.paper.setFont(font)
         # stylesheet
-        self.paper_1.setStyleSheet("QPushButton {\n"
-                                   "background-color: rgb(216, 255, 253);\n"
-                                   "color: rgb(0, 0, 0);\n"
-                                   "}\n"
-                                   "\n"
-                                   "QPushButton::pressed {\n"
-                                   "background-color : rgb(0, 0, 0);\n"
-                                   "color: rgb(255, 255, 255);\n"
-                                   "}")
+        shadow = QtWidgets.QGraphicsDropShadowEffect()
+        self.paper.setGraphicsEffect(shadow)
+        self.paper.setStyleSheet(button_style)
         # object name
-        self.paper_1.setObjectName("paper_1")
+        self.paper.setObjectName("paper")
         # layout
-        self.gridLayout.addWidget(self.paper_1, 2, 0, 1, 1)
+        self.choices_layout.addWidget(self.paper, 0, 1, 1, 1)
 
         # SCISSORS #####
-        self.scissors_1 = QtWidgets.QPushButton(self.widget_1)
+        self.scissors = QtWidgets.QPushButton(self.choices_widget)
         # size
-        self.scissors_1.setMinimumSize(QtCore.QSize(150, 100))
-        self.scissors_1.setMaximumSize(QtCore.QSize(220, 100))
+        self.scissors.setMinimumSize(QtCore.QSize(150, 100))
+        self.scissors.setMaximumSize(QtCore.QSize(200, 100))
         # font
         font.setPointSize(20)
-        self.scissors_1.setFont(font)
+        self.scissors.setFont(font)
         # stylesheet
-        self.scissors_1.setStyleSheet("QPushButton {\n"
-                                      "background-color: rgb(255, 75, 75);\n"
-                                      "color: rgb(0, 0, 0);\n"
-                                      "}\n"
-                                      "\n"
-                                      "QPushButton::pressed {\n"
-                                      "background-color : white;\n"
-                                      "color: rgb(0, 0, 0);\n"
-                                      "}")
+        shadow = QtWidgets.QGraphicsDropShadowEffect()
+        self.scissors.setGraphicsEffect(shadow)
+        self.scissors.setStyleSheet(button_style)
         # object name
-        self.scissors_1.setObjectName("scissors_1")
+        self.scissors.setObjectName("scissors")
         # layout
-        self.gridLayout.addWidget(self.scissors_1, 3, 0, 1, 1)
+        self.choices_layout.addWidget(self.scissors, 0, 2, 1, 1)
 
-        # adding widget 1 to outer widget
-        self.players_layout.addWidget(self.widget_1, 0, 0, 1, 1)
+        self.players_layout.addWidget(self.choices_widget, 1, 0, 1, 1)
 
         # adding players_widget to main widget
         self.main_layout.addWidget(self.players_widget, 1, 0, 1, 1)
+
+        # click click
+        self.rock.clicked.connect(lambda: self.choose_option('Rock'))
+        self.paper.clicked.connect(lambda: self.choose_option('Paper'))
+        self.scissors.clicked.connect(lambda: self.choose_option('Scissors'))
 
         # TEXT #########################################################
         self.text = QtWidgets.QLabel(RockPaperScissors)
@@ -270,8 +211,8 @@ class Ui_RockPaperScissors(object):
         font.setPointSize(18)
         self.text.setFont(font)
         # stylesheet
-        self.text.setStyleSheet("background-color: #759FBC;\n"
-                                "border-radius: 10px;\n"
+        self.text.setStyleSheet("background-color: #759FBC;"
+                                "border-radius: 10px;"
                                 "border: 1.5px dashed black;")
         # allignment
         self.text.setAlignment(QtCore.Qt.AlignCenter)
@@ -286,27 +227,16 @@ class Ui_RockPaperScissors(object):
         self.new_game.setMinimumSize(QtCore.QSize(500, 50))
         # font
         font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
         self.new_game.setFont(font)
         # stylesheet
-        self.new_game.setStyleSheet("QPushButton {\n"
-                                    "background-color: #49516F;\n"
-                                    "color: rgb(255, 255, 255);\n"
-                                    "border-radius: 20px;\n"
-                                    "border: 1px inset white;\n"
-                                    "}\n"
-                                    "\n"
-                                    "QPushButton::pressed {\n"
-                                    "background-color : white;\n"
-                                    "color: rgb(0, 0, 0);\n"
-                                    "border-radius: 20px;\n"
-                                    "border: 1px inset black;\n"
-                                    "}")
+        self.new_game.setStyleSheet(button_style)
         # object name
         self.new_game.setObjectName("new_game")
         # layout
         self.main_layout.addWidget(self.new_game, 3, 0, 1, 1)
+
+        # restarting game
+        self.new_game.clicked.connect(lambda: self.restart(RockPaperScissors))
 
         ###################################################################
         self.retranslateUi(RockPaperScissors)
@@ -327,24 +257,86 @@ class Ui_RockPaperScissors(object):
         # vs text
         self.vs_label.setText(_translate("RockPaperScissors", "Vs."))
 
-        # player 2 text
-        # rock
-        self.rock_2.setText(_translate("RockPaperScissors", "ROCK"))
-        # paper
-        self.paper_2.setText(_translate("RockPaperScissors", "PAPER"))
-        # scissors
-        self.scissors_2.setText(_translate("RockPaperScissors", "SCISSORS"))
-
         # player 1 text
         # rock
-        self.rock_1.setText(_translate("RockPaperScissors", "ROCK"))
+        self.rock.setText(_translate("RockPaperScissors", "ROCK"))
         # paper
-        self.paper_1.setText(_translate("RockPaperScissors", "PAPER"))
+        self.paper.setText(_translate("RockPaperScissors", "PAPER"))
         # scissors
-        self.scissors_1.setText(_translate("RockPaperScissors", "SCISSORS"))
+        self.scissors.setText(_translate("RockPaperScissors", "SCISSORS"))
 
         # text text
-        self.text.setText(_translate("RockPaperScissors", "LET\'S START!"))
+        self.text.setText(_translate("RockPaperScissors", "LET'S START!"))
 
         # new game text
         self.new_game.setText(_translate("RockPaperScissors", "New Game"))
+
+    def restart(self, RockPaperScissors):
+        self.rock.setEnabled(True)
+        self.paper.setEnabled(True)
+        self.scissors.setEnabled(True)
+
+        self.retranslateUi(RockPaperScissors)
+        QtCore.QMetaObject.connectSlotsByName(RockPaperScissors)
+
+    def win_check(self):
+        """Check Winner."""
+
+        player_wins = "Player WINS!"
+        computer_wins = "Computer WINS!"
+        
+    
+        if self.player_choice == self.computer_choice:
+            self.text.setText("TIE!")
+
+        # rock
+        elif self.player_choice == "Rock":
+
+            if self.computer_choice == "Paper":
+                self.text.setText(
+                    f"{computer_wins} {self.computer_choice} covers {self.player_choice}")
+
+            else:
+                self.text.setText(
+                    f"{player_wins} {self.player_choice} smashes {self.computer_choice}")
+
+        # paper
+        elif self.player_choice == "Paper":
+
+            if self.computer_choice == "Scissors":
+                self.text.setText(
+                    f"{computer_wins} {self.computer_choice} cuts {self.player_choice}")
+
+            else:
+                self.text.setText(
+                    f"{player_wins} {self.player_choice} covers {self.computer_choice}")
+
+        # scissors
+        elif self.player_choice == "Scissors":
+
+            if self.computer_choice == "Rock":
+                self.text.setText(
+                    f"{computer_wins} {self.computer_choice} smashes {self.player_choice}")
+
+            else:
+                self.text.setText(
+                    f"{player_wins} {self.player_choice} cuts {self.computer_choice}")
+        
+        self.rock.setEnabled(False)
+        self.paper.setEnabled(False)
+        self.scissors.setEnabled(False)
+
+    def choose_option(self, option):
+        self.computer_choice = choice(the_choices)
+
+        self.player_choice = option
+
+        self.player_image.setPixmap(QtGui.QPixmap(
+            f"ui/images/{self.player_choice.lower()}.png"))
+        self.player_image.setScaledContents(True)
+
+        self.computer_image.setPixmap(
+            QtGui.QPixmap(f"ui/images/{self.computer_choice.lower()}.png"))
+        self.computer_image.setScaledContents(True)
+
+        self.win_check()
