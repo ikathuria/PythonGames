@@ -1,16 +1,32 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import time
 import sys
+import time
+
 import os
 
 # personal modules
 import rulebook
+from hangman import Ui_Hangman
 from num_guess import Ui_num_guessing
 from rps import Ui_RockPaperScissors
 from ttt import Ui_TicTacToe
 
+# for stylesheet
+button_style = """QPushButton { background-color: rgb(0, 0, 0);
+                                 color: rgb(255, 255, 255);
+                                 border-radius: 10px; }
+                
+                QPushButton::pressed { background-color: rgb(255, 255, 255);
+                                    color: rgb(0, 0, 0);
+                                    border: 1px solid rgb(0, 0, 0);
+                                    border-radius: 10px; }
+                
+                QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
+                                        color: rgb(75, 75, 75); }"""
 
 # MAIN WINDOW #####################################################
+
+
 class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
@@ -114,6 +130,13 @@ class Ui_MainWindow(object):
         self.games_widget = QtWidgets.QWidget(self.centralwidget)
         # size
         self.games_widget.setGeometry(QtCore.QRect(380, 10, 730, 775))
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(
+            self.games_widget.sizePolicy().hasHeightForWidth())
+        self.games_widget.setSizePolicy(sizePolicy)
         # object name
         self.games_widget.setObjectName("games_widget")
 
@@ -227,7 +250,12 @@ class Ui_MainWindow(object):
             pass
 
         elif game == 'hangman':
-            pass
+            Hangman = QtWidgets.QWidget()
+            ui = Ui_Hangman()
+            ui.setupUi(Hangman)
+
+            Hangman.setParent(self.games_widget)
+            Hangman.show()
 
         elif game == 'number guessing':
             num_guessing = QtWidgets.QWidget()

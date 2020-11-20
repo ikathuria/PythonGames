@@ -10,14 +10,14 @@ the_choices = ['Rock', 'Paper', 'Scissors']
 button_style = """QPushButton { background-color: rgb(0, 0, 0);
                                  color: rgb(255, 255, 255);
                                  border-radius: 10px; }
-        
-        QPushButton::pressed { background-color: rgb(255, 255, 255);
-                               color: rgb(0, 0, 0);
-                               border: 1px solid rgb(0, 0, 0);
-                               border-radius: 10px; }
-        
-        QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
-                                color: rgb(75, 75, 75); }"""
+                
+                QPushButton::pressed { background-color: rgb(255, 255, 255);
+                                    color: rgb(0, 0, 0);
+                                    border: 1px solid rgb(0, 0, 0);
+                                    border-radius: 10px; }
+                
+                QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
+                                        color: rgb(75, 75, 75); }"""
 
 
 class Ui_RockPaperScissors(object):
@@ -211,8 +211,7 @@ class Ui_RockPaperScissors(object):
         font.setPointSize(18)
         self.text.setFont(font)
         # stylesheet
-        self.text.setStyleSheet("background-color: #759FBC;"
-                                "border-radius: 10px;"
+        self.text.setStyleSheet("border-radius: 10px;"
                                 "border: 1.5px dashed black;")
         # allignment
         self.text.setAlignment(QtCore.Qt.AlignCenter)
@@ -284,8 +283,7 @@ class Ui_RockPaperScissors(object):
 
         player_wins = "Player WINS!"
         computer_wins = "Computer WINS!"
-        
-    
+
         if self.player_choice == self.computer_choice:
             self.text.setText("TIE!")
 
@@ -321,7 +319,7 @@ class Ui_RockPaperScissors(object):
             else:
                 self.text.setText(
                     f"{player_wins} {self.player_choice} cuts {self.computer_choice}")
-        
+
         self.rock.setEnabled(False)
         self.paper.setEnabled(False)
         self.scissors.setEnabled(False)

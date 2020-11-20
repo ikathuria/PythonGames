@@ -6,13 +6,13 @@ button_style = """QPushButton { background-color: rgb(0, 0, 0);
                                  color: rgb(255, 255, 255);
                                  border-radius: 10px; }
         
-        QPushButton::pressed { background-color: rgb(255, 255, 255);
-                               color: rgb(0, 0, 0);
-                               border: 1px solid rgb(0, 0, 0);
-                               border-radius: 10px; }
-        
-        QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
-                                color: rgb(75, 75, 75); }"""
+                QPushButton::pressed { background-color: rgb(255, 255, 255);
+                                    color: rgb(0, 0, 0);
+                                    border: 1px solid rgb(0, 0, 0);
+                                    border-radius: 10px; }
+                
+                QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
+                                        color: rgb(75, 75, 75); }"""
 
 
 class Ui_num_guessing(object):
@@ -153,9 +153,8 @@ class Ui_num_guessing(object):
         font.setPointSize(26)
         self.make_your_guess.setFont(font)
         # stylesheet
-        self.make_your_guess.setStyleSheet("background-color: #759FBC;"
-                                "border-radius: 10px;"
-                                "border: 1.5px dashed black;")
+        self.make_your_guess.setStyleSheet("border-radius: 10px;"
+                                           "border: 1.5px dashed black;")
         # allignment
         self.make_your_guess.setAlignment(QtCore.Qt.AlignCenter)
         # object name

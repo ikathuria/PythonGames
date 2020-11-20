@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 button_style = """QPushButton { background-color: rgb(0, 0, 0);
                                  color: rgb(255, 255, 255);
                                  border-radius: 10px; }
-        
+                
                 QPushButton::pressed { background-color: rgb(255, 255, 255);
                                     color: rgb(0, 0, 0);
                                     border: 1px solid rgb(0, 0, 0);
@@ -228,8 +228,7 @@ class Ui_TicTacToe(object):
         font.setPointSize(18)
         self.text.setFont(font)
         # stylesheet
-        self.text.setStyleSheet("background-color: #759FBC;"
-                                "border-radius: 10px;"
+        self.text.setStyleSheet("border-radius: 10px;"
                                 "border: 1.5px dashed black;")
         # allignment
         self.text.setAlignment(QtCore.Qt.AlignCenter)
@@ -249,6 +248,7 @@ class Ui_TicTacToe(object):
         self.new_game.setStyleSheet(button_style)
         # object name
         self.new_game.setObjectName("new_game")
+        # adding to main layout
         self.main_layout.addWidget(self.new_game, 3, 0, 1, 1)
 
         # restarting game
@@ -294,7 +294,7 @@ class Ui_TicTacToe(object):
                 j.setEnabled(True)
 
         # label set text
-        self.text.setText(_translate("TicTacToe", "X's TURN"))
+        self.text.setText(_translate("TicTacToe", "Let's Start"))
 
         # new game button set text
         self.new_game.setText(_translate("TicTacToe", "New Game"))
