@@ -222,7 +222,7 @@ class Ui_num_guess(object):
 
         # WELCOME TEXT
         self.welcome.setText(_translate(
-            "num_guess", "WELCOME TO NUMBER GUESSING"))
+            "num_guess", "WELCOME TO NUMBER GUESSING!"))
 
         # TEXT TEXT
         self.text.setText(_translate("num_guess", "Choose your level"))
