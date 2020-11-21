@@ -108,7 +108,7 @@ class Ui_hangman(object):
         self.image = QtWidgets.QLabel(self.game_box)
         # size
         sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+            QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHeightForWidth(True)
         self.image.setSizePolicy(sizePolicy)
         self.image.setMinimumSize(QtCore.QSize(200, 200))
@@ -142,157 +142,157 @@ class Ui_hangman(object):
         # the letters
         # a
         self.button_a = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_a.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_a.setMinimumSize(QtCore.QSize(20, 20))
         self.button_a.setObjectName("button_a")
         self.letters_layout.addWidget(self.button_a, 0, 0, 1, 1)
 
         # b
         self.button_b = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_b.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_b.setMinimumSize(QtCore.QSize(20, 20))
         self.button_b.setObjectName("button_b")
         self.letters_layout.addWidget(self.button_b, 0, 1, 1, 1)
 
         # c
         self.button_c = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_c.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_c.setMinimumSize(QtCore.QSize(20, 20))
         self.button_c.setObjectName("button_c")
         self.letters_layout.addWidget(self.button_c, 0, 2, 1, 1)
 
         # d
         self.button_d = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_d.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_d.setMinimumSize(QtCore.QSize(20, 20))
         self.button_d.setObjectName("button_d")
         self.letters_layout.addWidget(self.button_d, 1, 0, 1, 1)
 
         # e
         self.button_e = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_e.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_e.setMinimumSize(QtCore.QSize(20, 20))
         self.button_e.setObjectName("button_e")
         self.letters_layout.addWidget(self.button_e, 1, 1, 1, 1)
 
         # f
         self.button_f = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_f.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_f.setMinimumSize(QtCore.QSize(20, 20))
         self.button_f.setObjectName("button_f")
         self.letters_layout.addWidget(self.button_f, 1, 2, 1, 1)
 
         # g
         self.button_g = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_g.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_g.setMinimumSize(QtCore.QSize(20, 20))
         self.button_g.setObjectName("button_g")
         self.letters_layout.addWidget(self.button_g, 2, 0, 1, 1)
 
         # h
         self.button_h = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_h.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_h.setMinimumSize(QtCore.QSize(20, 20))
         self.button_h.setObjectName("button_h")
         self.letters_layout.addWidget(self.button_h, 2, 1, 1, 1)
 
         # i
         self.button_i = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_i.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_i.setMinimumSize(QtCore.QSize(20, 20))
         self.button_i.setObjectName("button_i")
         self.letters_layout.addWidget(self.button_i, 2, 2, 1, 1)
 
         # j
         self.button_j = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_j.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_j.setMinimumSize(QtCore.QSize(20, 20))
         self.button_j.setObjectName("button_j")
         self.letters_layout.addWidget(self.button_j, 3, 0, 1, 1)
 
         # k
         self.button_k = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_k.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_k.setMinimumSize(QtCore.QSize(20, 20))
         self.button_k.setObjectName("button_k")
         self.letters_layout.addWidget(self.button_k, 3, 1, 1, 1)
 
         # l
         self.button_l = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_l.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_l.setMinimumSize(QtCore.QSize(20, 20))
         self.button_l.setObjectName("button_l")
         self.letters_layout.addWidget(self.button_l, 3, 2, 1, 1)
 
         # m
         self.button_m = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_m.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_m.setMinimumSize(QtCore.QSize(20, 20))
         self.button_m.setObjectName("button_m")
         self.letters_layout.addWidget(self.button_m, 4, 0, 1, 1)
 
         # n
         self.button_n = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_n.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_n.setMinimumSize(QtCore.QSize(20, 20))
         self.button_n.setObjectName("button_n")
         self.letters_layout.addWidget(self.button_n, 4, 1, 1, 1)
 
         # o
         self.button_o = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_o.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_o.setMinimumSize(QtCore.QSize(20, 20))
         self.button_o.setObjectName("button_o")
         self.letters_layout.addWidget(self.button_o, 4, 2, 1, 1)
 
         # p
         self.button_p = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_p.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_p.setMinimumSize(QtCore.QSize(20, 20))
         self.button_p.setObjectName("button_p")
         self.letters_layout.addWidget(self.button_p, 5, 0, 1, 1)
 
         # q
         self.button_q = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_q.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_q.setMinimumSize(QtCore.QSize(20, 20))
         self.button_q.setObjectName("button_q")
         self.letters_layout.addWidget(self.button_q, 5, 1, 1, 1)
 
         # r
         self.button_r = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_r.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_r.setMinimumSize(QtCore.QSize(20, 20))
         self.button_r.setObjectName("button_r")
         self.letters_layout.addWidget(self.button_r, 5, 2, 1, 1)
 
         # s
         self.button_s = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_s.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_s.setMinimumSize(QtCore.QSize(20, 20))
         self.button_s.setObjectName("button_s")
         self.letters_layout.addWidget(self.button_s, 6, 0, 1, 1)
 
         # t
         self.button_t = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_t.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_t.setMinimumSize(QtCore.QSize(20, 20))
         self.button_t.setObjectName("button_t")
         self.letters_layout.addWidget(self.button_t, 6, 1, 1, 1)
 
         # u
         self.button_u = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_u.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_u.setMinimumSize(QtCore.QSize(20, 20))
         self.button_u.setObjectName("button_u")
         self.letters_layout.addWidget(self.button_u, 6, 2, 1, 1)
 
         # v
         self.button_v = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_v.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_v.setMinimumSize(QtCore.QSize(20, 20))
         self.button_v.setObjectName("button_v")
         self.letters_layout.addWidget(self.button_v, 7, 0, 1, 1)
 
         # w
         self.button_w = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_w.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_w.setMinimumSize(QtCore.QSize(20, 20))
         self.button_w.setObjectName("button_w")
         self.letters_layout.addWidget(self.button_w, 7, 1, 1, 1)
 
         # x
         self.button_x = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_x.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_x.setMinimumSize(QtCore.QSize(20, 20))
         self.button_x.setObjectName("button_x")
         self.letters_layout.addWidget(self.button_x, 7, 2, 1, 1)
 
         # y
         self.button_y = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_y.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_y.setMinimumSize(QtCore.QSize(20, 20))
         self.button_y.setObjectName("button_y")
         self.letters_layout.addWidget(self.button_y, 8, 0, 1, 1)
 
         # z
         self.button_z = QtWidgets.QPushButton(self.letter_buttons)
-        self.button_z.setMinimumSize(QtCore.QSize(60, 60))
+        self.button_z.setMinimumSize(QtCore.QSize(20, 20))
         self.button_z.setObjectName("button_z")
         self.letters_layout.addWidget(self.button_z, 8, 1, 1, 1)
         self.letters.setWidget(self.letter_buttons)
