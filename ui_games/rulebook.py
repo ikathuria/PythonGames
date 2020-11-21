@@ -18,7 +18,9 @@ The conditions for winning and losing are as follows:
 4. If both dealer and player receive a blackjack (a value of 21) or any other hands with the same sum called a "push", no one wins."""
 
     elif name_of_game == 'hangman':
-        return """test"""
+        return """Hangman is a paper and pencil word guessing game. The system chooses a random word that the user tries to guess by suggesting letters.
+
+The user has 6 guesses. The player wins if they are able to guess the word within the number of guesses."""
 
     elif name_of_game == 'number guessing':
         return """This is a number guessing game where the system chooses a random number that the user has to attempt to guess. It has 3 levels of difficulty.

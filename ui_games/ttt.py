@@ -1,3 +1,18 @@
+"""The game of Tic Tac Toe (also known as Noughts and Crosses) made using python.
+
+Tic tac toe is a paper-and-pencil game for two players, X and O, who take turns
+marking the spaces in a 3×3 grid.  The player who succeeds in placing three of
+their marks in a horizontal, vertical, or diagonal row is the winner. If no player
+succeeds in achieving such a pattern and the grib has no empty spaces left, there
+is a draw.
+
+There is a one player option where the user gets to play against the computer
+and a two player option when the user wants to play with a friend.
+
+This program uses the `random` module for the one player mode.
+
+"""
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -11,15 +26,15 @@ button_style = """QPushButton { background-color: rgb(0, 0, 0);
                                     border: 1px solid rgb(0, 0, 0);
                                     border-radius: 10px; }
                 
-                QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
+                QPushButton::disabled { background-color: rgba(0, 0, 0, 0.2);
                                         color: rgb(75, 75, 75); }"""
 
 grid_style = """QPushButton { background-color: rgb(255, 255, 255); }"""
 
-x_clicked_style = """QPushButton::disabled { border-image: url(ui/images/x.png);
+x_clicked_style = """QPushButton::disabled { border-image: url(ui_games/images/ttt/x.png);
                                              color: #ff615f; }"""
 
-o_clicked_style = """QPushButton::disabled { border-image: url(ui/images/o.png);
+o_clicked_style = """QPushButton::disabled { border-image: url(ui_games/images/ttt/o.png);
                                              color: rgb(255, 255, 255); }"""
 
 
@@ -29,14 +44,19 @@ class Ui_tic_tac_toe(object):
     def setupUi(self, tic_tac_toe):
         """setup ui."""
 
+        self.tic_tac_toe = tic_tac_toe
+
         tic_tac_toe.setObjectName("tic_tac_toe")
+
+        # font
+        font = QtGui.QFont()
+        font.setFamily("Microsoft JhengHei UI")
+        tic_tac_toe.setFont(font)
 
         # size
         tic_tac_toe.resize(530, 530)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(
             tic_tac_toe.sizePolicy().hasHeightForWidth())
         tic_tac_toe.setSizePolicy(sizePolicy)
@@ -45,7 +65,7 @@ class Ui_tic_tac_toe(object):
         # stylesheet
         tic_tac_toe.setStyleSheet("background-color: rgb(255, 255, 255);")
 
-        # the main grid layout
+        # main layout
         self.main_layout = QtWidgets.QGridLayout(tic_tac_toe)
         self.main_layout.setContentsMargins(10, 10, 10, 10)
         self.main_layout.setHorizontalSpacing(20)
@@ -54,11 +74,12 @@ class Ui_tic_tac_toe(object):
 
         # WELCOME #############################################################
         self.welcome = QtWidgets.QLabel(tic_tac_toe)
+        # font
+        font.setPointSize(18)
+        self.welcome.setFont(font)
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(
             self.welcome.sizePolicy().hasHeightForWidth())
         self.welcome.setSizePolicy(sizePolicy)
@@ -99,8 +120,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_1.setSizePolicy(sizePolicy)
         self.button_1.setMinimumSize(QtCore.QSize(110, 110))
@@ -114,8 +133,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_2.setSizePolicy(sizePolicy)
         self.button_2.setMinimumSize(QtCore.QSize(110, 110))
@@ -129,8 +146,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_3.setSizePolicy(sizePolicy)
         self.button_3.setMinimumSize(QtCore.QSize(110, 110))
@@ -144,8 +159,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_4.setSizePolicy(sizePolicy)
         self.button_4.setMinimumSize(QtCore.QSize(110, 110))
@@ -159,8 +172,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_5.setSizePolicy(sizePolicy)
         self.button_5.setMinimumSize(QtCore.QSize(110, 110))
@@ -174,8 +185,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_6.setSizePolicy(sizePolicy)
         self.button_6.setMinimumSize(QtCore.QSize(110, 110))
@@ -189,8 +198,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_7.setSizePolicy(sizePolicy)
         self.button_7.setMinimumSize(QtCore.QSize(110, 110))
@@ -204,8 +211,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_8.setSizePolicy(sizePolicy)
         self.button_8.setMinimumSize(QtCore.QSize(110, 110))
@@ -219,8 +224,6 @@ class Ui_tic_tac_toe(object):
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(True)
         self.button_9.setSizePolicy(sizePolicy)
         self.button_9.setMinimumSize(QtCore.QSize(110, 110))
@@ -233,32 +236,21 @@ class Ui_tic_tac_toe(object):
         self.main_layout.addWidget(self.grid, 1, 0, 1, 2)
 
         # button click click
-        self.button_1.clicked.connect(
-            lambda: self.on_click(self.button_1))
-        self.button_2.clicked.connect(
-            lambda: self.on_click(self.button_2))
-        self.button_3.clicked.connect(
-            lambda: self.on_click(self.button_3))
-        self.button_4.clicked.connect(
-            lambda: self.on_click(self.button_4))
-        self.button_5.clicked.connect(
-            lambda: self.on_click(self.button_5))
-        self.button_6.clicked.connect(
-            lambda: self.on_click(self.button_6))
-        self.button_7.clicked.connect(
-            lambda: self.on_click(self.button_7))
-        self.button_8.clicked.connect(
-            lambda: self.on_click(self.button_8))
-        self.button_9.clicked.connect(
-            lambda: self.on_click(self.button_9))
+        self.button_1.clicked.connect(self.on_click)
+        self.button_2.clicked.connect(self.on_click)
+        self.button_3.clicked.connect(self.on_click)
+        self.button_4.clicked.connect(self.on_click)
+        self.button_5.clicked.connect(self.on_click)
+        self.button_6.clicked.connect(self.on_click)
+        self.button_7.clicked.connect(self.on_click)
+        self.button_8.clicked.connect(self.on_click)
+        self.button_9.clicked.connect(self.on_click)
 
         # TURN/WINNER ############################################################
         self.turn_winner = QtWidgets.QLabel(tic_tac_toe)
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(
             self.turn_winner.sizePolicy().hasHeightForWidth())
         self.turn_winner.setSizePolicy(sizePolicy)
@@ -276,11 +268,12 @@ class Ui_tic_tac_toe(object):
 
         # NEW GAME BUTTON ######################################################
         self.new_game = QtWidgets.QPushButton(tic_tac_toe)
+        # font
+        font.setPointSize(14)
+        self.new_game.setFont(font)
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(
             self.new_game.sizePolicy().hasHeightForWidth())
         self.new_game.setSizePolicy(sizePolicy)
@@ -310,8 +303,9 @@ class Ui_tic_tac_toe(object):
         QtCore.QMetaObject.connectSlotsByName(tic_tac_toe)
 
     def retranslateUi(self, tic_tac_toe):
-        _translate = QtCore.QCoreApplication.translate
+        """retransalate."""
 
+        _translate = QtCore.QCoreApplication.translate
         # WINDOW TITLE
         tic_tac_toe.setWindowTitle(_translate("tic_tac_toe", "ttt"))
 
@@ -334,6 +328,8 @@ class Ui_tic_tac_toe(object):
         self.new_game.setText(_translate("tic_tac_toe", "New Game"))
 
     def restart(self, tic_tac_toe):
+        """Resets the game for the user."""
+
         self.turn == 'X'
         self.count = 0
 
@@ -341,6 +337,8 @@ class Ui_tic_tac_toe(object):
         QtCore.QMetaObject.connectSlotsByName(tic_tac_toe)
 
     def win_check(self):
+        """Check winning conditions."""
+
         win = False
 
         # all the rows
@@ -362,8 +360,10 @@ class Ui_tic_tac_toe(object):
 
         return win
 
-    def on_click(self, button):
+    def on_click(self):
         self.count += 1
+
+        button = self.tic_tac_toe.sender()
 
         button.setEnabled(False)
 

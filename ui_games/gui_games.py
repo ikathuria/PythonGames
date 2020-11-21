@@ -1,3 +1,9 @@
+"""Different one player games made with python.
+
+The user interface is designed with PyQt5.
+
+"""
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
@@ -19,7 +25,7 @@ button_style = """QPushButton { background-color: rgb(0, 0, 0);
                                     border: 1px solid rgb(0, 0, 0);
                                     border-radius: 10px; }
 
-                QPushButton::disabled { background-color: rgb(0, 0, 0, 0.2);
+                QPushButton::disabled { background-color: rgba(0, 0, 0, 0.2);
                                         color: rgb(75, 75, 75); }"""
 
 
@@ -30,6 +36,9 @@ class Ui_PythonGames(object):
         """Setting up the User Interface."""
 
         PythonGames.setObjectName("PythonGames")
+
+        # icon
+        PythonGames.setWindowIcon(QtGui.QIcon("ui_games/images/icon.png")) 
 
         # setting size at 800x600
         PythonGames.resize(800, 600)
@@ -263,7 +272,8 @@ class Ui_PythonGames(object):
         self.ttt_button.clicked.connect(lambda: self.start_game('Tic Tac Toe'))
 
         # RULES TEXT
-        self.rules_label.setText(_translate("PythonGames", "Click on a game to see the rules"))
+        self.rules_label.setText(_translate(
+            "PythonGames", "Click on a game to see the rules"))
 
         # EXIT BUTTON TEXT
         self.exit_button.setText(_translate("PythonGames", "Exit"))
@@ -335,7 +345,7 @@ class Ui_PythonGames(object):
         sys.exit()
 
 
-if __name__ == "__main__":
+def main():
     app = QtWidgets.QApplication(sys.argv)
 
     PythonGames = QtWidgets.QMainWindow()
@@ -346,3 +356,7 @@ if __name__ == "__main__":
     PythonGames.show()
 
     sys.exit(app.exec_())
+
+
+if __name__ == "__main__":
+    main()
