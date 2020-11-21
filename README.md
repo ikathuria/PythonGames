@@ -1,6 +1,7 @@
 
 # Python Games
 Some popular offline games given an online twist with python.
+The games are made in 2 formats, the normal command line text based format and a graphical user interface format made with the help of PyQt5.
 
 ## What it looks like
 <img src="https://ishani.kathuria.net/wp-content/uploads/2020/11/pygames.jpg" width="600">
