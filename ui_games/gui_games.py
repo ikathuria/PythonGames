@@ -9,6 +9,7 @@ import sys
 
 # personal modules
 import rulebook
+from blackjack import Ui_blackjack
 from hangman import Ui_hangman
 from num_guess import Ui_num_guess
 from rps import Ui_rps
@@ -185,8 +186,7 @@ class Ui_PythonGames(object):
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.games_frame.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(True)
         self.games_frame.setSizePolicy(sizePolicy)
         self.games_frame.setMinimumSize(QtCore.QSize(530, 530))
         # stylesheet
@@ -306,7 +306,11 @@ class Ui_PythonGames(object):
         the_game = False
 
         if game == 'blackjack':
-            pass
+            blackjack = QtWidgets.QWidget()
+            ui = Ui_blackjack()
+            ui.setupUi(blackjack)
+
+            the_game = blackjack
 
         elif game == 'hangman':
             hangman = QtWidgets.QWidget()

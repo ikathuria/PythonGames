@@ -55,11 +55,6 @@ class Ui_tic_tac_toe(object):
 
         # size
         tic_tac_toe.resize(530, 530)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHeightForWidth(
-            tic_tac_toe.sizePolicy().hasHeightForWidth())
-        tic_tac_toe.setSizePolicy(sizePolicy)
         tic_tac_toe.setMinimumSize(QtCore.QSize(530, 530))
 
         # stylesheet
