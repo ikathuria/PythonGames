@@ -192,6 +192,9 @@ class Ui_blackjack(object):
 
         # WELCOME #############################################################
         self.welcome = QtWidgets.QLabel(blackjack)
+        # font
+        font.setPointSize(18)
+        self.welcome.setFont(font)
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.MinimumExpanding)
@@ -574,6 +577,9 @@ class Ui_blackjack(object):
 
         # TEXT ############################################################################
         self.text = QtWidgets.QLabel(blackjack)
+        # font
+        font.setPointSize(12)
+        self.text.setFont(font)
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.MinimumExpanding)
@@ -594,6 +600,9 @@ class Ui_blackjack(object):
 
         # NEW GAME BUTTON ################################################################
         self.new_game = QtWidgets.QPushButton(blackjack)
+        # font
+        font.setPointSize(14)
+        self.new_game.setFont(font)
         # size
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Expanding)
