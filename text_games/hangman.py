@@ -5,7 +5,14 @@ thinks of a word, phrase or sentence and the other(s) tries to guess it by sugge
 letters within a certain number of guesses.
 
 """
-VOWELS = ['a', 'e', 'i', 'o', 'u']
+
+import random
+
+the_words = ['python', 'hangman', 'games', 'rainbow', 'phoenix', 'rhythm',
+             'dragon', 'dog', 'cat', 'paint', 'rock', 'paper', 'scissors',
+             'chocolate', 'pizza', 'burger', 'egg', 'chicken', 'cheese',
+             'mathematics', 'morning', 'afternoon', 'night', 'disney',
+             'netflix', 'microsoft', 'google']
 
 
 def replay():
@@ -43,7 +50,56 @@ if __name__ == "__main__":
         print("Goodbye!")
 
     while GAME_ON:
-        NUM_OF_GUESSES = 6
+        WIN = False
+
+        all_guesses = []  # all the player guesses
+        COUNT = 0  # counter to keep track of player's guesses
+        word = random.choice(the_words)  # the word to be guessed
+
+        print(f"Guess the word: {'_ '*len(word)}")
+
+        # guessing
+        while COUNT < 6:
+            while True:
+                guess = input("\nEnter you guess: ").lower()
+                if guess not in all_guesses:
+                    if guess.isalpha():
+                        break
+                    print("Not a valid letter! Try again")
+
+                else:
+                    print(
+                        "Letter already guessed! Choose another letter")
+
+            all_guesses.append(guess)
+
+            CURRENT = ''
+
+            if guess not in word:
+                COUNT += 1
+
+            for letter in word:
+                if letter in all_guesses:
+                    CURRENT += letter
+                else:
+                    CURRENT += '_'
+
+                CURRENT += ' '
+
+            print(f"\nGUESSES LEFT: {6-COUNT}")
+            print(f"Your guesses: {all_guesses}")
+            print(f"\nThe word: {CURRENT}")
+
+            if '_' not in CURRENT:
+                WIN = True
+                break
+
+        if WIN:
+            print("\nYOU GOT IT!")
+        else:
+            print("\nGame Over!")
+
+        print(f"The word was {word}")
 
         # asking the user if they want to play again
         GAME_ON = replay()

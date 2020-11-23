@@ -4,8 +4,8 @@ The user interface is designed with PyQt5.
 
 """
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 # personal modules
 import rulebook

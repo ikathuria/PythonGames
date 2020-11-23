@@ -6,11 +6,6 @@ their marks in a horizontal, vertical, or diagonal row is the winner. If no play
 succeeds in achieving such a pattern and the grib has no empty spaces left, there
 is a draw.
 
-There is a one player option where the user gets to play against the computer
-and a two player option when the user wants to play with a friend.
-
-This program uses the `random` module for the one player mode.
-
 """
 
 

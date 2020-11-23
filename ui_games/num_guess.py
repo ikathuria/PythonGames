@@ -10,8 +10,8 @@ This program uses the `random` module to generate random ranges and answers.
 
 """
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 from random import randrange, randint
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 # for stylesheet
 button_style = """QPushButton { background-color: rgb(0, 0, 0);

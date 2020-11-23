@@ -6,8 +6,8 @@ letters within 6 guesses.
 
 """
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 from random import choice
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 # for stylesheet
 button_style = """QPushButton { background-color: rgb(0, 0, 0);
@@ -351,11 +351,15 @@ class Ui_hangman(object):
         self.new_game.clicked.connect(lambda: self.restart(hangman))
 
         # OTHER VARIABLES ##########################################################
-        self.texts = ['python', 'hangman', 'games', 'rainbow']
+        self.the_words = ['python', 'hangman', 'games', 'rainbow', 'phoenix', 'rhythm',
+                          'dragon', 'dog', 'cat', 'paint', 'rock', 'paper', 'scissors',
+                          'chocolate', 'pizza', 'burger', 'egg', 'chicken', 'cheese',
+                          'mathematics', 'morning', 'afternoon', 'night', 'disney',
+                          'netflix', 'microsoft', 'google']
 
         self.all_guesses = []
 
-        self.word = choice(self.texts)
+        self.word = choice(self.the_words)
         self.length = len(self.word)
 
         self.count = 0
@@ -421,7 +425,7 @@ class Ui_hangman(object):
         self.image.setScaledContents(True)
 
         # setting new word
-        self.word = choice(self.texts)
+        self.word = choice(self.the_words)
         self.length = len(self.word)
 
         # resetting guesses

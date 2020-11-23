@@ -27,8 +27,8 @@ made using classes.
 
 """
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 import random
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 # for stylesheet
 button_style = """QPushButton { background-color: rgb(0, 0, 0);
@@ -625,11 +625,14 @@ class Ui_blackjack(object):
         self.new_game.clicked.connect(lambda: self.restart(blackjack))
 
         # OTHER VARIABLES ###################################################################
-        self.player_cards = [self.player_card_1, self.player_card_2, self.player_card_3, self.player_card_4, self.player_card_5,
-                             self.player_card_6, self.player_card_7, self.player_card_8, self.player_card_9, self.player_card_10, self.player_card_11]
+        self.player_cards = [self.player_card_1, self.player_card_2, self.player_card_3,
+                             self.player_card_4, self.player_card_5, self.player_card_6,
+                             self.player_card_7, self.player_card_8, self.player_card_9,
+                             self.player_card_10, self.player_card_11]
 
-        self.dealer_cards = [self.dealer_card_1, self.dealer_card_2, self.dealer_card_3, self.dealer_card_4,
-                             self.dealer_card_5, self.dealer_card_6, self.dealer_card_7, self.dealer_card_8, self.dealer_card_9]
+        self.dealer_cards = [self.dealer_card_1, self.dealer_card_2, self.dealer_card_3,
+                             self.dealer_card_4, self.dealer_card_5, self.dealer_card_6,
+                             self.dealer_card_7, self.dealer_card_8, self.dealer_card_9]
 
         self.new_deck = Deck()  # initalizing deck
         self.new_deck.shuffle()  # shuffling deck
@@ -760,13 +763,13 @@ class Ui_blackjack(object):
 
         elif self.dealer_hand.value > self.player_hand.value:
             self.text.setText("Dealer WINS!")
-        
+
         elif self.dealer_hand.value < self.player_hand.value:
             self.text.setText("Player WINS!")
-        
+
         else:
             self.text.setText("PUSH! It is a tie!")
-        
+
         self.hit.setEnabled(False)
         self.stand.setEnabled(False)
 

@@ -14,8 +14,8 @@ This program uses the `random` module for the one player mode.
 
 """
 
-from PyQt5 import QtCore, QtGui, QtWidgets
 from random import choice
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 the_choices = ['Rock', 'Paper', 'Scissors']
 

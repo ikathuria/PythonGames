@@ -1,3 +1,6 @@
+"""Rulebook module with rules for all the games."""
+
+
 def rule_book(name_of_game):
 
     name_of_game = name_of_game.lower()
