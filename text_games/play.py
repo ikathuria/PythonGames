@@ -6,6 +6,12 @@ import time
 # my module
 import rulebook
 
+if os.name == 'posix':  # for mac and linux
+    cmd = "python3"
+
+else:  # for windows
+    cmd = "python"
+
 
 def clear_screen():
     """Clears screen using the `os` module."""
@@ -65,7 +71,7 @@ while True:
         print(*WEL, end="\n\n")
 
         rules('blackjack')
-        os.system("python text_games//blackjack.py")
+        os.system(f"{cmd} text_games//blackjack.py")
 
     # hangman
     elif choice == 2:
@@ -73,7 +79,7 @@ while True:
         print(*WEL, end="\n\n")
 
         rules('hangman')
-        os.system("python text_games//hangman.py")
+        os.system(f"{cmd} text_games//hangman.py")
 
     # number guessing game
     elif choice == 3:
@@ -81,7 +87,7 @@ while True:
         print(*WEL, end="\n\n")
 
         rules('number_guessing')
-        os.system("python text_games//number_guessing.py")
+        os.system(f"{cmd} text_games//number_guessing.py")
 
     # rock paper scissors
     elif choice == 4:
@@ -89,7 +95,7 @@ while True:
         print(*WEL, end="\n\n")
 
         rules('rock_paper_scissors')
-        os.system("python text_games//rock_paper_scissors.py")
+        os.system(f"{cmd} text_games//rock_paper_scissors.py")
 
     # nuer tic tac toe
     elif choice == 5:
@@ -97,7 +103,7 @@ while True:
         print(*WEL, end="\n\n")
 
         rules('tic_tac_toe')
-        os.system("python text_games//tic_tac_toe.py")
+        os.system(f"{cmd} text_games//tic_tac_toe.py")
 
     # war
     elif choice == 6:
@@ -105,7 +111,7 @@ while True:
         print(*WEL, end="\n\n")
 
         rules('war')
-        os.system("python text_games//war.py")
+        os.system(f"{cmd} text_games//war.py")
 
     # exit
     elif choice == 7:
