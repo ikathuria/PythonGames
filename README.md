@@ -7,9 +7,9 @@ The games are made in 2 formats, the normal command line text based format and a
 [Run on repl.it!](https://repl.it/@ikathuria/PythonGames)
 
 ## What it looks like
-<img src="https://ishani.kathuria.net/wp-content/uploads/2020/11/pygames.jpg" width="600">
-<img src="https://ishani.kathuria.net/wp-content/uploads/2020/11/pg1.png" width="600">
-<img src="https://ishani.kathuria.net/wp-content/uploads/2020/08/pg2.png" width="600">
-<img src="https://ishani.kathuria.net/wp-content/uploads/2020/08/pg3.png" width="600">
-<img src="https://ishani.kathuria.net/wp-content/uploads/2020/08/pg4.png" width="600">
-<img src="https://ishani.kathuria.net/wp-content/uploads/2020/08/pg5.png" width="600">
+<img src="/images/pgCLI.jpg" width="600">
+<img src="/images/pgGui1.png" width="600">
+<img src="/images/pgGui2.png" width="600">
+<img src="/images/pgGui3.png" width="600">
+<img src="/images/pgGui4.png" width="600">
+<img src="/images/pgGui5.png" width="600">
