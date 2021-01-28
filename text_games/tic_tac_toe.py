@@ -35,6 +35,33 @@ def replay():
             print("Invalid input! Try again!")
 
 
+def who_is_playing():
+    """Gives the user the otion to choose number of players.
+
+    Returns:
+        1 if chosen number of players is one.
+        2 if chosen number of players is two.
+
+    Raises:
+        ValueError: Invalid input! Try Again!
+
+    """
+
+    while True:
+        try:
+            players = int(input("\nHow many players? 1 or 2: "))
+
+            if players in range(1, 3):
+                if players == 1:
+                    return 1
+                return 2
+            print("Choose 1 or 2!")
+            raise ValueError
+
+        except ValueError:
+            print("Invalid input! Try Again!")
+
+
 def display_board(board):
     """Prints the game board.
 
@@ -190,6 +217,13 @@ if __name__ == "__main__":
         print("Goodbye!")
 
     while GAME_ON:
+        # game start
+        NUM_OF_PLAYERS = who_is_playing()
+        if NUM_OF_PLAYERS == 1:
+            second_player = "Computer"
+        else:
+            second_player = "Player 2"
+
         # starting game display
         THE_KEY = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
         GAME_DISPLAY = ['0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
@@ -202,7 +236,7 @@ if __name__ == "__main__":
         PLAYER1, PLAYER2 = choosing_marker()  # markers set
 
         # turns
-        while TURN in ("Player 1", "Player 2"):
+        while TURN in ("Player 1", second_player):
             if TURN == "Player 1":  # player one's turn
 
                 display_board(GAME_DISPLAY)  # display current board game
@@ -223,7 +257,7 @@ if __name__ == "__main__":
                         TURN = "Finish"
 
                     else:
-                        TURN = "Player 2"
+                        TURN = second_player
 
             elif TURN == "Player 2":  # player two's turn
 
@@ -235,6 +269,27 @@ if __name__ == "__main__":
                 if win_check(GAME_DISPLAY, PLAYER2):
                     display_board(GAME_DISPLAY)
                     print("\nPlayer 2 has won!")  # player two wins, game ends
+                    TURN = "Finish"
+
+                else:
+                    if full_board_check(GAME_DISPLAY):
+                        display_board(GAME_DISPLAY)
+                        print("\nThe game is a draw!")  # game ends in a draw
+                        TURN = "Finish"
+
+                    else:
+                        TURN = "Player 1"
+
+            elif TURN == "Computer":  # computer's turn
+
+                display_board(GAME_DISPLAY)  # display current board game
+                print("\nComputer,", end=" ")
+                POS = position_input(GAME_DISPLAY)
+                place_marker(GAME_DISPLAY, PLAYER2, POS)
+
+                if win_check(GAME_DISPLAY, PLAYER2):
+                    display_board(GAME_DISPLAY)
+                    print("\nComputer has won!")  # computer wins, game ends
                     TURN = "Finish"
 
                 else:
