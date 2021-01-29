@@ -103,7 +103,7 @@ while True:
         print(*WEL, end="\n\n")
 
         rules('tic_tac_toe')
-        os.system(f"{cmd} text_games//tic_tac_toe.py")
+        os.system(f"{cmd} text_games//tic_tac_toe//game.py")
 
     # war
     elif choice == 6:
