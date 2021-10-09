@@ -115,7 +115,7 @@ class Ui_hangman(object):
         # allignment
         self.image.setAlignment(QtCore.Qt.AlignCenter)
         # setting image
-        self.image.setPixmap(QtGui.QPixmap("ui_games/images/hangman/0.png"))
+        self.image.setPixmap(QtGui.QPixmap("static/images/hangman/0.png"))
         self.image.setScaledContents(True)
         # object name
         self.image.setObjectName("image")
@@ -421,7 +421,7 @@ class Ui_hangman(object):
             button.setEnabled(True)
 
         # setting image
-        self.image.setPixmap(QtGui.QPixmap("ui_games/images/hangman/0.png"))
+        self.image.setPixmap(QtGui.QPixmap("static/images/hangman/0.png"))
         self.image.setScaledContents(True)
 
         # setting new word
@@ -450,7 +450,7 @@ class Ui_hangman(object):
         if guess not in self.word:
             self.count += 1
             self.image.setPixmap(QtGui.QPixmap(
-                f"ui_games/images/hangman/{self.count}.png"))
+                f"static/images/hangman/{self.count}.png"))
             self.image.setScaledContents(True)
 
         for letter in self.word:

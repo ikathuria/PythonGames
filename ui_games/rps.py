@@ -349,11 +349,11 @@ class Ui_rps(object):
         self.player_choice = self.rps.sender().text()
 
         self.player.setPixmap(QtGui.QPixmap(
-            f"ui_games/images/rps/{self.player_choice.lower()}.png"))
+            f"static/images/rps/{self.player_choice.lower()}.png"))
         self.player.setScaledContents(True)
 
         self.computer.setPixmap(
-            QtGui.QPixmap(f"ui_games/images/rps/{self.computer_choice.lower()}.png"))
+            QtGui.QPixmap(f"static/images/rps/{self.computer_choice.lower()}.png"))
         self.computer.setScaledContents(True)
 
         self.win_check()

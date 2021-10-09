@@ -26,10 +26,10 @@ button_style = """QPushButton { background-color: rgb(0, 0, 0);
 
 grid_style = """QPushButton { background-color: rgb(255, 255, 255); }"""
 
-x_clicked_style = """QPushButton::disabled { border-image: url(ui_games/images/ttt/x.png);
+x_clicked_style = """QPushButton::disabled { border-image: url(static/images/ttt/x.png);
                                              color: #ff615f; }"""
 
-o_clicked_style = """QPushButton::disabled { border-image: url(ui_games/images/ttt/o.png);
+o_clicked_style = """QPushButton::disabled { border-image: url(static/images/ttt/o.png);
                                              color: rgb(255, 255, 255); }"""
 
 

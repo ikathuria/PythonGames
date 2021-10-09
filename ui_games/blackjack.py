@@ -715,7 +715,7 @@ class Ui_blackjack(object):
 
         # PLAYER CARDS
         for i in range(len(self.player_hand.cards)):
-            card = f"ui_games/images/blackjack/{self.player_hand.cards[i]}.png"
+            card = f"static/images/blackjack/{self.player_hand.cards[i]}.png"
 
             self.player_cards[i].setPixmap(QtGui.QPixmap(card))
             self.player_cards[i].setHidden(False)
@@ -724,11 +724,11 @@ class Ui_blackjack(object):
 
         # DEALER CARDS
         self.dealer_card_1.setPixmap(QtGui.QPixmap(
-            f"ui_games/images/blackjack/{self.dealer_hand.cards[0]}.png"))
+            f"static/images/blackjack/{self.dealer_hand.cards[0]}.png"))
         self.dealer_card_1.setHidden(False)
 
         self.dealer_card_2.setPixmap(QtGui.QPixmap(
-            "ui_games/images/blackjack/gray_back.png"))
+            "static/images/blackjack/gray_back.png"))
         self.dealer_card_2.setHidden(False)
 
         if self.player_hand.value == 21:
@@ -742,7 +742,7 @@ class Ui_blackjack(object):
 
         # PLAYER CARDS
         for i in range(len(self.player_hand.cards)):
-            card = f"ui_games/images/blackjack/{self.player_hand.cards[i]}.png"
+            card = f"static/images/blackjack/{self.player_hand.cards[i]}.png"
 
             self.player_cards[i].setPixmap(QtGui.QPixmap(card))
             self.player_cards[i].setHidden(False)
@@ -751,7 +751,7 @@ class Ui_blackjack(object):
 
         # DEALER CARDS
         for i in range(len(self.dealer_hand.cards)):
-            card = f"ui_games/images/blackjack/{self.dealer_hand.cards[i]}.png"
+            card = f"static/images/blackjack/{self.dealer_hand.cards[i]}.png"
 
             self.dealer_cards[i].setPixmap(QtGui.QPixmap(card))
             self.dealer_cards[i].setHidden(False)
