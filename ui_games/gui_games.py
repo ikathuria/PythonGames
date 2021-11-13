@@ -4,6 +4,7 @@ The user interface is designed with PyQt5.
 
 """
 
+import os
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -14,6 +15,18 @@ from hangman import Ui_hangman
 from num_guess import Ui_num_guess
 from rps import Ui_rps
 from ttt import Ui_tic_tac_toe
+
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller.
+    """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 
 # for stylesheet
@@ -39,7 +52,7 @@ class Ui_PythonGames(object):
         PythonGames.setObjectName("PythonGames")
 
         # icon
-        PythonGames.setWindowIcon(QtGui.QIcon("static/images/icon.ico")) 
+        PythonGames.setWindowIcon(QtGui.QIcon(resource_path("static/images/icon.ico")))
 
         # setting size at 800x600
         PythonGames.resize(800, 600)

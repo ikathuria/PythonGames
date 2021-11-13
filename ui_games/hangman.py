@@ -6,8 +6,23 @@ letters within 6 guesses.
 
 """
 
+import os
+import sys
 from random import choice
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller.
+    """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 # for stylesheet
 button_style = """QPushButton { background-color: rgb(0, 0, 0);
@@ -115,7 +130,9 @@ class Ui_hangman(object):
         # allignment
         self.image.setAlignment(QtCore.Qt.AlignCenter)
         # setting image
-        self.image.setPixmap(QtGui.QPixmap("static/images/hangman/0.png"))
+        self.image.setPixmap(QtGui.QPixmap(resource_path(
+            "static/images/hangman/0.png"
+        )))
         self.image.setScaledContents(True)
         # object name
         self.image.setObjectName("image")
@@ -421,7 +438,9 @@ class Ui_hangman(object):
             button.setEnabled(True)
 
         # setting image
-        self.image.setPixmap(QtGui.QPixmap("static/images/hangman/0.png"))
+        self.image.setPixmap(QtGui.QPixmap(resource_path(
+            "static/images/hangman/0.png"
+        )))
         self.image.setScaledContents(True)
 
         # setting new word
@@ -449,8 +468,9 @@ class Ui_hangman(object):
 
         if guess not in self.word:
             self.count += 1
-            self.image.setPixmap(QtGui.QPixmap(
-                f"static/images/hangman/{self.count}.png"))
+            self.image.setPixmap(QtGui.QPixmap(resource_path(
+                f"static/images/hangman/{self.count}.png"
+            )))
             self.image.setScaledContents(True)
 
         for letter in self.word:

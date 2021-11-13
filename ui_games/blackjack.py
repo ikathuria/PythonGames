@@ -27,8 +27,23 @@ made using classes.
 
 """
 
+import os
+import sys
 import random
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller.
+    """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 # for stylesheet
 button_style = """QPushButton { background-color: rgb(0, 0, 0);
@@ -717,18 +732,20 @@ class Ui_blackjack(object):
         for i in range(len(self.player_hand.cards)):
             card = f"static/images/blackjack/{self.player_hand.cards[i]}.png"
 
-            self.player_cards[i].setPixmap(QtGui.QPixmap(card))
+            self.player_cards[i].setPixmap(QtGui.QPixmap(resource_path(card)))
             self.player_cards[i].setHidden(False)
 
         self.player_value.setText(f"Player Value: {self.player_hand.value}")
 
         # DEALER CARDS
-        self.dealer_card_1.setPixmap(QtGui.QPixmap(
-            f"static/images/blackjack/{self.dealer_hand.cards[0]}.png"))
+        self.dealer_card_1.setPixmap(QtGui.QPixmap(resource_path(
+            f"static/images/blackjack/{self.dealer_hand.cards[0]}.png"
+        )))
         self.dealer_card_1.setHidden(False)
 
         self.dealer_card_2.setPixmap(QtGui.QPixmap(
-            "static/images/blackjack/gray_back.png"))
+            resource_path("static/images/blackjack/gray_back.png")
+        ))
         self.dealer_card_2.setHidden(False)
 
         if self.player_hand.value == 21:
@@ -744,7 +761,7 @@ class Ui_blackjack(object):
         for i in range(len(self.player_hand.cards)):
             card = f"static/images/blackjack/{self.player_hand.cards[i]}.png"
 
-            self.player_cards[i].setPixmap(QtGui.QPixmap(card))
+            self.player_cards[i].setPixmap(QtGui.QPixmap(resource_path(card)))
             self.player_cards[i].setHidden(False)
 
         self.player_value.setText(f"Player Value: {self.player_hand.value}")
@@ -753,7 +770,7 @@ class Ui_blackjack(object):
         for i in range(len(self.dealer_hand.cards)):
             card = f"static/images/blackjack/{self.dealer_hand.cards[i]}.png"
 
-            self.dealer_cards[i].setPixmap(QtGui.QPixmap(card))
+            self.dealer_cards[i].setPixmap(QtGui.QPixmap(resource_path(card)))
             self.dealer_cards[i].setHidden(False)
 
         self.dealer_value.setText(f"Dealer Value: {self.dealer_hand.value}")

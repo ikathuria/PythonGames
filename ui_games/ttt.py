@@ -8,7 +8,21 @@ is a draw.
 
 """
 
+import os
+import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller.
+    """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 
 # for stylesheet
@@ -26,11 +40,11 @@ button_style = """QPushButton { background-color: rgb(0, 0, 0);
 
 grid_style = """QPushButton { background-color: rgb(255, 255, 255); }"""
 
-x_clicked_style = """QPushButton::disabled { border-image: url(static/images/ttt/x.png);
-                                             color: #ff615f; }"""
+x_clicked_style = f"""QPushButton::disabled {{ border-image: url({resource_path("static/images/ttt/x.png")});
+                                               color: #ff615f; }}"""
 
-o_clicked_style = """QPushButton::disabled { border-image: url(static/images/ttt/o.png);
-                                             color: rgb(255, 255, 255); }"""
+o_clicked_style = f"""QPushButton::disabled {{ border-image: url({resource_path("static/images/ttt/o.png")});
+                                               color: rgb(255, 255, 255); }}"""
 
 
 class Ui_tic_tac_toe(object):

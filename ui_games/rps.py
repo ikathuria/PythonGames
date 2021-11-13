@@ -14,8 +14,23 @@ This program uses the `random` module for the one player mode.
 
 """
 
+import os
+import sys
 from random import choice
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller.
+    """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 the_choices = ['Rock', 'Paper', 'Scissors']
 
@@ -348,12 +363,15 @@ class Ui_rps(object):
 
         self.player_choice = self.rps.sender().text()
 
-        self.player.setPixmap(QtGui.QPixmap(
-            f"static/images/rps/{self.player_choice.lower()}.png"))
+        self.player.setPixmap(QtGui.QPixmap(resource_path(
+            f"static/images/rps/{self.player_choice.lower()}.png"
+        )))
         self.player.setScaledContents(True)
 
         self.computer.setPixmap(
-            QtGui.QPixmap(f"static/images/rps/{self.computer_choice.lower()}.png"))
+            QtGui.QPixmap(resource_path(
+                f"static/images/rps/{self.computer_choice.lower()}.png"
+        )))
         self.computer.setScaledContents(True)
 
         self.win_check()
