@@ -39,7 +39,7 @@ class Ui_PythonGames(object):
         PythonGames.setObjectName("PythonGames")
 
         # icon
-        PythonGames.setWindowIcon(QtGui.QIcon("ui_games/images/icon.png")) 
+        PythonGames.setWindowIcon(QtGui.QIcon("static/images/icon.ico")) 
 
         # setting size at 800x600
         PythonGames.resize(800, 600)
