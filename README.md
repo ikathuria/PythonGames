@@ -8,7 +8,9 @@ There are 2 versions of my application,
 2. **Window version with PyQT5 GUI**
 3. **Combined version**
 
-To try it yourself, view it here: [Run on repl.it!](https://repl.it/@ikathuria/PythonGames)
+To try it yourself, view it here:  
+[GitHub Pages](https://ikathuria.github.io/PythonGames/)
+[Run on repl.it!](https://repl.it/@ikathuria/PythonGames)
 
 ## How to use
 Clone the directory with `git clone https://github.com/ikathuria/PythonGames.git` and navigate to the directory. See file structure for more information.
