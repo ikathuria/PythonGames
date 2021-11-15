@@ -3,7 +3,7 @@
 Some popular offline games with an online twist with python. The games are made in 2 formats, the normal command line text-based format, and a graphical user interface format made with the help of PyQt5.
 
 ## What my application does
-There are 2 versions of my application,
+There are 3 versions of my application,
 1. **Command line version**
 2. **Window version with PyQT5 GUI**
 3. **Combined version**
