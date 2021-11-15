@@ -9,7 +9,7 @@ There are 2 versions of my application,
 3. **Combined version**
 
 To try it yourself, view it here:  
-[GitHub Pages](https://ikathuria.github.io/PythonGames/)
+[GitHub Pages](https://ikathuria.github.io/PythonGames/)  
 [Run on repl.it!](https://repl.it/@ikathuria/PythonGames)
 
 ## How to use
@@ -26,13 +26,12 @@ Clone the directory with `git clone https://github.com/ikathuria/PythonGames.git
 | `gui_games.exe` | Exe file compiled to run the GUI games.                                       | [Click Me](/gui_games.exe)         |
 
 ## What it looks like
-<img src="static/images/pgCLI.jpg" height="250">
-
-<img src="static/images/pgGui1.png" height="250">
-<img src="static/images/pgGui2.png" height="250">
-<img src="static/images/pgGui3.png" height="250">
-<img src="static/images/pgGui4.png" height="250">
-<img src="static/images/pgGui5.png" height="250">
+<img src="static/images/pgCLI.jpg" width="500">
+<img src="static/images/pgGui1.png" width="500">
+<img src="static/images/pgGui2.png" width="500">
+<img src="static/images/pgGui3.png" width="500">
+<img src="static/images/pgGui4.png" width="500">
+<img src="static/images/pgGui5.png" width="500">
 
 ## License
 [MIT](/LICENSE)
