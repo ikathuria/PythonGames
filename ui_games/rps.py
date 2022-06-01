@@ -29,7 +29,7 @@ def resource_path(relative_path):
     except Exception:
         base_path = os.path.abspath(".")
 
-    return os.path.join(base_path, relative_path)
+    return os.path.join(base_path, relative_path).replace("\\", "/")
 
 
 the_choices = ['Rock', 'Paper', 'Scissors']
